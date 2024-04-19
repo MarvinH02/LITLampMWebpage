@@ -1,4 +1,4 @@
-import {SignInView} from '../SignInView.jsx';
+import {SignInView} from '../views/SignInView.jsx';
 import { auth, provider, signOut, signInWithPopup } from "../firebaseModel.js";
 export default function SignInPresenter(props) {
 
@@ -13,7 +13,7 @@ export default function SignInPresenter(props) {
   }
   return (
     <div>
-      <SignInView signInCustomEventCB={signInCustomEventHandlerACB} testCounterPlusCustomEventCB={testCounterPlusCustomEventHandlerACB}/>
+      <SignInView signInCustomEventCB={signInCustomEventHandlerACB} testCounterPlusCustomEventCB={testCounterPlusCustomEventHandlerACB} testCounter={props.model.testCounter}/>
     </div>
   );
 }

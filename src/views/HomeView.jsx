@@ -9,4 +9,4 @@ function HomeView (props) {
     )
   }
   
-  export default HomeView;
+  export {HomeView}

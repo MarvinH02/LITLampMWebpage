@@ -1,4 +1,4 @@
-import {HomeView} from '../HomeView.jsx';
+import {HomeView} from '../views/HomeView.jsx';
 
 export default function HomePresenter(props) {
 

@@ -1,5 +1,5 @@
-import SignInPresenter from '../views/SignInView.jsx';
-import HomePresenter from '../views/HomeView.jsx';
+import SignInPresenter from '../presenters/SignInPresenter.jsx';
+import HomePresenter from '../presenters/HomePresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
 
 
