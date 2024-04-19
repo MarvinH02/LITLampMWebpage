@@ -16,4 +16,7 @@ export default {
         this.testCounter++;
         console.log("Test Counter: "+this.testCounter);
     },
+    setUser(user) {
+        this.user = user;
+    },
 };

@@ -39,28 +39,52 @@ function saveToFirebase(model){
     if(model.ready === true)
         set(ref(db, PATH),modelToPersistence(model));
 }
+function saveUserToFirebase(model){
+    console.log("saveUserToFirebase");
+    if(model.ready && model.user){
+        set(ref(db, PATH + "/" + model.user.uid), modelToPersistence(model));
+    }
+
+}
 
 function fetchFromFirebase(model) {
-    model.ready=false;
-    return get(ref(db, PATH + "/test"))
-        .then(function convertToModelACB(savedState){
-            return persistenceToModelUserData(savedState.val(), model);
-        })
-        .then(function modelReadyCB() {
-            model.ready = true;
-        });
+    console.log("fetchFromFirebase");
+    if(model.user){
+        model.ready=false;
+        return get(ref(db, PATH + "/" + model.user.uid))
+            .then(function convertToModelACB(savedState){
+                return persistenceToModelUserData(savedState.val(), model);
+            })
+            .then(function modelReadyCB() {
+                model.ready = true;
+            });
+    }
 }
 
 function connectToFirebase(model, watchFunction){
-    fetchFromFirebase(model);
-    watchFunction(checkACB, updateFirebaseACB);
+    model.ready = false;
+    console.log("connectToFirebase");
+    onAuthStateChanged(auth, authLoginOrLogoutACB);
+    console.log("auth state changed");
+    function authLoginOrLogoutACB(){
+        model.setUser(auth.currentUser);
+        if(model.user){
+            console.log("1");
+            fetchFromFirebase(model);
+            watchFunction(checkACB, updateFirebaseACB);
+            console.log("2");
+            console.log("User Logged In");
+        }
+        console.log("4")
+    }
 
     function checkACB(){
         return [model.currentPage];
     }
     function updateFirebaseACB(){
-        saveToFirebase(model);
+        saveUserToFirebase(model);
     }
+    model.ready = true;
 }
 export {auth, provider, signInWithPopup, signOut}
 
