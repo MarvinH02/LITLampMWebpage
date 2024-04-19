@@ -11,7 +11,12 @@ const db= getDatabase(app)
 console.log("Database")
 console.log(db)
 
-set(ref(db, PATH+"/test"), "Kossa");
+//set(ref(db, PATH+"/test"), "Kossa");
+import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
+const auth = getAuth(app);
+const provider = new GoogleAuthProvider();
+
+
 
 function modelToPersistence(model) {
 
@@ -57,5 +62,6 @@ function connectToFirebase(model, watchFunction){
         saveToFirebase(model);
     }
 }
+export {auth, provider, signInWithPopup, signOut}
 
 export default connectToFirebase;
