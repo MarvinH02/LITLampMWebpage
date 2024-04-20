@@ -4,6 +4,7 @@ export default {
     user: null,
     currentPage: null,
     testCounter: 3,
+    showHamburger: false,
 
 
 
@@ -18,5 +19,16 @@ export default {
     },
     setUser(user) {
         this.user = user;
+    },
+
+    setShowHamburger(){
+        if(this.showHamburger === true){
+            this.showHamburger = false;
+        }
+        
+        else if (this.showHamburger === false){
+            this.showHamburger = true;
+        }
+        
     },
 };

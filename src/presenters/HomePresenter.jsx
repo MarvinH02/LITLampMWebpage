@@ -2,9 +2,17 @@ import {HomeView} from '../views/HomeView.jsx';
 
 export default function HomePresenter(props) {
 
+  function changeBurgerState(){
+    props.model.setShowHamburger();
+  }
+
   return (
     <div>
-      <HomeView />
+      <HomeView 
+      hideOrShowBurger = {changeBurgerState}
+      />
     </div>
   );
+
+  
 }

@@ -1,7 +1,8 @@
 import SignInPresenter from '../presenters/SignInPresenter.jsx';
 import HomePresenter from '../presenters/HomePresenter.jsx';
+import HamburgerSidebarPresenter from './HamburgerSidebarPresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
-
+import '../style.css';
 
 export function makeRouter(model) {
     return createRouter({
@@ -21,9 +22,23 @@ export function makeRouter(model) {
 
 export default function VueRoot(props) {
     if (!props.model.ready) { return <LoadingView/> }
+    if (props.model.showHamburger){
+        return (
+            <div className='flex-container'>
+                <div className='hamburger'>
+                    <HamburgerSidebarPresenter model={props.model}/> 
+                </div>
+                <div className='mainContent'>
+                    <RouterView /> 
+                </div>
+                 
+            </div>
+        );
+    }
     return (
-        <div>
-            <RouterView />
+        <div>      
+            <RouterView />          
         </div>
-    );
+    )
+
 }
