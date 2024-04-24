@@ -8,7 +8,11 @@ function HomeView (props) {
     
     return (
       <div>
-        <button onClick={changeBurgerStateHandler}>burgerIconPlaceholder</button>
+        <button onClick={changeBurgerStateHandler}>
+          <span class="material-symbols-outlined">
+          menu
+          </span>
+        </button>
         <h1>Home page</h1>
         <button onClick={goToSignInPageACB}>Go to Sign In Page</button>
       </div>

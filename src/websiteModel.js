@@ -5,6 +5,7 @@ export default {
     currentPage: null,
     testCounter: 3,
     showHamburger: false,
+    poweredOn: true,
 
 
 
@@ -30,5 +31,14 @@ export default {
             this.showHamburger = true;
         }
         
+    },
+    togglePower(){
+        console.log("Power Toggled");
+        if(this.poweredOn === true){
+            this.poweredOn = false;
+        }
+        else{
+            this.poweredOn = true;
+        } 
     },
 };

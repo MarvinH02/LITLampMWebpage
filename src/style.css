@@ -10,3 +10,52 @@
     flex: 0.1;
     border: 2px solid yellow;
 }
+.header{
+    display: flex;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    justify-content: center;
+}
+.buttonsInHeader{
+    display: flex;
+    padding: 10px;
+    justify-content: space-around;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+}
+.iconButtons{
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    
+}
+.iconButtons:hover{
+    background-color: #f1f1f1;
+}
+.powerButton{
+    border: none;
+    border-radius: 50%; 
+    cursor: pointer;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;         
+}
+.powerButton:hover{
+    background-color: #3e8e41;
+}
+.powerView{
+    display: flex;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    height: 100vh;
+}
+.powerButton .material-symbols-outlined {
+    font-size: 340px;
+}

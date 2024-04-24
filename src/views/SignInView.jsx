@@ -20,8 +20,6 @@ function SignInView (props) {
         <p>{props.user.email}</p>
         <button onClick={signInWithGoogleButtonPressedCB}>{props.user ? <p>Sign Out</p> : <p>Sign In</p>}</button>
         <button onClick={goToHomePageACB}>Go to Home Page</button>
-        <button onClick={testCounterPlusCB}>Test Counter +1</button>
-        <p>Counter: {props.testCounter}</p>
       </div>
     )
   }
@@ -32,8 +30,6 @@ function SignInView (props) {
         <h1>Sign In</h1>
         <button onClick={signInWithGoogleButtonPressedCB}>{props.user ? <p>Sign Out</p> : <p>Sign In</p>}</button>
         <button onClick={goToHomePageACB}>Go to Home Page</button>
-        <button onClick={testCounterPlusCB}>Test Counter +1</button>
-        <p>Counter: {props.testCounter}</p>
       </div>
     )
   }
