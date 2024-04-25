@@ -13,7 +13,7 @@ function SignInView (props) {
     console.log("User signed in");
     console.log(props.user)
     return (
-      <div className='testing123'>
+      <div className='center'>
         <h1>Account</h1>
         <img src={props.user.photoURL} alt="User Photo"/>
         <p>{props.user.displayName}</p>
@@ -27,7 +27,7 @@ function SignInView (props) {
   else{
     console.log("User not signed in");
     return (
-      <div className='testing123'>
+      <div className='center'>
         <h1>Sign In</h1>
         <v-btn onClick={signInWithGoogleButtonPressedCB}>
           {props.user ? <p>Sign Out</p> : <p>Sign In</p>}

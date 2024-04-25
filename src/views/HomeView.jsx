@@ -8,7 +8,7 @@ function HomeView (props) {
     }
     
     return (
-      <div className='testing123'>
+      <div className='center'>
         <h1>Home page</h1>
         <v-btn onClick={goToSignInPageACB}>
           Sign In To Get Started!
