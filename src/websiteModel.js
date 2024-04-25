@@ -6,6 +6,7 @@ export default {
     testCounter: 3,
     showHamburger: false,
     poweredOn: true,
+    brightness: 10,
 
 
 
@@ -40,5 +41,9 @@ export default {
         else{
             this.poweredOn = true;
         } 
+    },
+    setBrightness(number){
+        if (this.brightness !== number)
+            this.brightness = number;
     },
 };
