@@ -2,7 +2,7 @@
 function HamburgerSidebarView (props){
     function accountPageHandler(){window.location.hash = "#/"; }
     function homePageHandler(){window.location.hash = "#/home"; }
-
+    function aboutUsPageHandler(){window.location.hash = "#/about"; }
 
     if(props.user){
         return(
@@ -27,7 +27,7 @@ function HamburgerSidebarView (props){
                         <v-list-item onClick={homePageHandler} prepend-icon="" title="Home" value="boomba"></v-list-item>
                         <v-list-item prepend-icon="" title="Devices" value="bombaclat"></v-list-item>
                         <v-list-item prepend-icon="" title="Statistics" value="gabagoo"></v-list-item>
-                        <v-list-item prepend-icon="" title="About us" value="gooba"></v-list-item>
+                        <v-list-item onClick={aboutUsPageHandler} prepend-icon="" title="About us" value="gooba"></v-list-item>
                         </v-list>
                 </v-navigation-drawer>
                 </v-app>
@@ -54,7 +54,7 @@ function HamburgerSidebarView (props){
                         <v-list density="compact" nav>
                         <v-list-item onClick={accountPageHandler} prepend-icon="" title="My Account" value="account"></v-list-item>
                         <v-list-item onClick={homePageHandler} prepend-icon="" title="Home" value="boomba"></v-list-item>
-                        <v-list-item prepend-icon="" title="About us" value="gooba"></v-list-item>
+                        <v-list-item onClick={aboutUsPageHandler} prepend-icon="" title="About us" value="gooba"></v-list-item>
                         </v-list>
                 </v-navigation-drawer>
                 </v-app>

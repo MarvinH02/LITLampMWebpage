@@ -4,6 +4,7 @@ import HamburgerSidebarPresenter from './HamburgerSidebarPresenter.jsx';
 import HeaderPresenter from './HeaderPresenter.jsx';
 import PowerOnPresenter from './PowerOnPresenter.jsx';
 import ColorPresenter from './ColorPresenter.jsx';
+import AboutUsPresenter from './AboutUsPresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
 import '../style.css';
 
@@ -26,6 +27,10 @@ export function makeRouter(model) {
             {
                 path: "/color",
                 component: <ColorPresenter model={model} />,
+            },
+            {
+                path: "/about",
+                component: <AboutUsPresenter model={model} />,
             },
         ]
     });
