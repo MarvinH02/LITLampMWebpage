@@ -1,5 +1,8 @@
 function HeaderView (props) {
     function goToPowerPageACB() {window.location.hash = "#/power"; }
+
+    function ClickedColorPageHandler() {window.location.hash="#/color"}
+
     return(
         <div class="header">
             <div class="buttonsInHeader">
@@ -9,7 +12,7 @@ function HeaderView (props) {
                     </span>
                     ON/OFF & Brightness
                 </button>
-                <button class="iconButtons">
+                <button class="iconButtons" onClick={ClickedColorPageHandler}>
                     <span class="material-symbols-outlined">
                     palette
                     </span>

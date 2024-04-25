@@ -3,6 +3,7 @@ import HomePresenter from '../presenters/HomePresenter.jsx';
 import HamburgerSidebarPresenter from './HamburgerSidebarPresenter.jsx';
 import HeaderPresenter from './HeaderPresenter.jsx';
 import PowerOnPresenter from './PowerOnPresenter.jsx';
+import ColorPresenter from './ColorPresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
 import '../style.css';
 
@@ -21,7 +22,11 @@ export function makeRouter(model) {
             {
                 path: "/power",
                 component: <PowerOnPresenter model={model} />,
-            }
+            },
+            {
+                path: "/color",
+                component: <ColorPresenter model={model} />,
+            },
         ]
     });
 }
