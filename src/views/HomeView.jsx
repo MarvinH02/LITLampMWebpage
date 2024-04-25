@@ -14,7 +14,10 @@ function HomeView (props) {
           </span>
         </button>
         <h1>Home page</h1>
-        <button onClick={goToSignInPageACB}>Go to Sign In Page</button>
+        <v-btn onClick={goToSignInPageACB}>
+          Go to Sign In Page
+        </v-btn>
+        
       </div>
     )
   }

@@ -3,7 +3,7 @@ function ColorView (props){
     
     return(
         <div>
-            Color
+            <v-color-picker></v-color-picker>
         </div>
     ); 
 
