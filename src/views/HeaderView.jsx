@@ -1,3 +1,5 @@
+import '../style.css';
+
 function HeaderView (props) {
     function goToPowerPageACB() {window.location.hash = "#/power"; }
 

@@ -32,28 +32,14 @@ export function makeRouter(model) {
 }
 
 export default function VueRoot(props) {
-    if (!props.model.ready) { return <LoadingView/> }
-    if (props.model.showHamburger){
-        return (
-            <div className="flexParent">
-                <HeaderPresenter model={props.model} />
-                <div className='flex-container'>
-                    <div className='hamburger'>
-                        <HamburgerSidebarPresenter model={props.model}/> 
-                    </div>
-                    <div className='mainContent'>
-                        <RouterView /> 
-                    </div>  
-                </div>
-            </div>
-        );
-    }
+    
     return (
-        <div className="flexParent">
+        <div>
             <HeaderPresenter model={props.model} />
-            <div>      
-                <RouterView />          
-            </div>
+            
+            <RouterView />
+
+            <HamburgerSidebarPresenter model={props.model}/>
         </div>
     )
 

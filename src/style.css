@@ -75,3 +75,8 @@
     cursor: pointer;
     width: 80%;
 }
+
+.testing123{
+    justify-content: center;
+    display:flex;
+}

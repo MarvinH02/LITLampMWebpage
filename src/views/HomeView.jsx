@@ -1,3 +1,4 @@
+import '../style.css';
 
 function HomeView (props) {
     function goToSignInPageACB() {window.location.hash = "#/"; }
@@ -7,15 +8,10 @@ function HomeView (props) {
     }
     
     return (
-      <div>
-        <v-btn variant="tonal" onClick={changeBurgerStateHandler}>
-          <span class="material-symbols-outlined">
-          menu
-          </span>
-        </v-btn>
+      <div className='testing123'>
         <h1>Home page</h1>
         <v-btn onClick={goToSignInPageACB}>
-          Go to Sign In Page
+          Sign In To Get Started!
         </v-btn>
         
       </div>

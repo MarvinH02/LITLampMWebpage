@@ -1,6 +1,6 @@
+import '../style.css';
 
 function SignInView (props) {
-  function goToHomePageACB() {window.location.hash = "#/home"; }
   function signInWithGoogleButtonPressedCB() {
   
   props.signInOrOutCustomEventCB();
@@ -13,23 +13,25 @@ function SignInView (props) {
     console.log("User signed in");
     console.log(props.user)
     return (
-      <div>
+      <div className='testing123'>
         <h1>Account</h1>
         <img src={props.user.photoURL} alt="User Photo"/>
         <p>{props.user.displayName}</p>
         <p>{props.user.email}</p>
-        <button onClick={signInWithGoogleButtonPressedCB}>{props.user ? <p>Sign Out</p> : <p>Sign In</p>}</button>
-        <button onClick={goToHomePageACB}>Go to Home Page</button>
+        <v-btn onClick={signInWithGoogleButtonPressedCB}>
+          {props.user ? <p>Sign Out</p> : <p>Sign In</p>}
+        </v-btn>
       </div>
     )
   }
   else{
     console.log("User not signed in");
     return (
-      <div>
+      <div className='testing123'>
         <h1>Sign In</h1>
-        <button onClick={signInWithGoogleButtonPressedCB}>{props.user ? <p>Sign Out</p> : <p>Sign In</p>}</button>
-        <button onClick={goToHomePageACB}>Go to Home Page</button>
+        <v-btn onClick={signInWithGoogleButtonPressedCB}>
+          {props.user ? <p>Sign Out</p> : <p>Sign In</p>}
+        </v-btn>
       </div>
     )
   }
