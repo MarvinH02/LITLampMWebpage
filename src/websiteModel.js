@@ -7,9 +7,13 @@ export default {
     showHamburger: false,
     poweredOn: true,
     brightness: 10,
+    color: `#000000`,
 
 
-
+    setColor(color){
+        this.color = color;
+        console.log("Color in model: "+this.color);
+    },
     setCurrentPage(page) {
         if (this.currentPage !== page && page) {
             this.currentPage = page;

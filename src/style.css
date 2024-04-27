@@ -80,3 +80,18 @@
     justify-content: center;
     display:flex;
 }
+.colorView {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    flex-direction: column;
+}
+.colorButton{
+    padding: 10px;
+}
+.colorPicker{
+    
+}
