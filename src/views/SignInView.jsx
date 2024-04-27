@@ -1,6 +1,7 @@
 import '../style.css';
 
 function SignInView (props) {
+
   function signInWithGoogleButtonPressedCB() {
   
   props.signInOrOutCustomEventCB();
@@ -13,26 +14,38 @@ function SignInView (props) {
     console.log("User signed in");
     console.log(props.user)
     return (
-      <div className='center'>
-        <h1>Account</h1>
-        <img src={props.user.photoURL} alt="User Photo"/>
-        <p>{props.user.displayName}</p>
-        <p>{props.user.email}</p>
-        <v-btn onClick={signInWithGoogleButtonPressedCB}>
-          {props.user ? <p>Sign Out</p> : <p>Sign In</p>}
-        </v-btn>
+      <div>
+        <div className='center'>
+          <img src={props.user.photoURL} alt="User Photo"/>
+        </div>
+        <div className='center'>
+          <p>{props.user.displayName}</p>
+        </div>
+        <div className='center'>
+          <p>{props.user.email}</p>
+        </div>
+        <div className='center'>
+          <v-btn onClick={signInWithGoogleButtonPressedCB}>
+            {props.user ? <p>Sign Out</p> : <p>Sign In</p>}
+          </v-btn>
+        </div>
       </div>
     )
   }
   else{
     console.log("User not signed in");
     return (
-      <div className='center'>
-        <h1>Sign In</h1>
-        <v-btn onClick={signInWithGoogleButtonPressedCB}>
-          {props.user ? <p>Sign Out</p> : <p>Sign In</p>}
-        </v-btn>
+      <div>
+        <div className='center'>
+          <h1>Sign In</h1>
+        </div>
+        <div className='center'>
+          <v-btn onClick={signInWithGoogleButtonPressedCB}>
+            {props.user ? <p>Sign Out</p> : <p>Sign In</p>}
+          </v-btn>
+        </div>
       </div>
+      
     )
   }
 
