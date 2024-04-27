@@ -5,6 +5,7 @@ import HeaderPresenter from './HeaderPresenter.jsx';
 import PowerOnPresenter from './PowerOnPresenter.jsx';
 import ColorPresenter from './ColorPresenter.jsx';
 import AboutUsPresenter from './AboutUsPresenter.jsx';
+import SchedulePresenter from './SchedulePresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
 import '../style.css';
 
@@ -32,6 +33,11 @@ export function makeRouter(model) {
                 path: "/about",
                 component: <AboutUsPresenter model={model} />,
             },
+            {
+                path: "/schedule",
+                component: <SchedulePresenter model={model} />,
+            },
+
         ]
     });
 }

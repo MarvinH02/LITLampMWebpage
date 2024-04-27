@@ -1,14 +1,16 @@
 import '../style.css';
 
 function HeaderView (props) {
-    function goToPowerPageACB() {window.location.hash = "#/power"; }
+    function goToPowerPageHandler() {window.location.hash = "#/power"}
 
     function ClickedColorPageHandler() {window.location.hash="#/color"}
+
+    function ClickedScheduleHandler() {window.location.hash="#/schedule"}
 
     return(
         <div class="header">
             <div class="buttonsInHeader">
-                <v-btn variant="tonal" class="iconButtons" onClick={goToPowerPageACB}>
+                <v-btn variant="tonal" class="iconButtons" onClick={goToPowerPageHandler}>
                     <span class="material-symbols-outlined">
                     power_settings_new
                     </span>
@@ -20,7 +22,7 @@ function HeaderView (props) {
                     </span>
                     Color
                 </v-btn>
-                <v-btn variant="tonal" class="iconButtons">
+                <v-btn variant="tonal" class="iconButtons" onClick={ClickedScheduleHandler}>
                     <span class="material-symbols-outlined">
                     schedule
                     </span>
