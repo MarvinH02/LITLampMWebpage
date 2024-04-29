@@ -95,3 +95,15 @@
 .colorPicker{
     
 }
+
+.createScheduleDisplay{
+    font-size: 50px;
+    justify-content: center;
+    display:flex;
+}
+
+.schedule{
+    font-size: 35px;
+    justify-content: center;
+    display:flex;
+}

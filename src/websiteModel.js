@@ -8,6 +8,11 @@ export default {
     brightness: 10,
     color: `#000000`,
     creatingSchedule: false,
+    scheduleHours: 0,
+    scheduleMinutes: 0,
+    schedules : [],
+    scheduleOnOffState : true,
+
 
 
     setColor(color){
@@ -53,4 +58,65 @@ export default {
         if (this.brightness !== number)
             this.brightness = number;
     },
+
+    setScheduleHours(action){
+        if(action == ' + '){
+            if(this.scheduleHours == 23)
+                this.scheduleHours = 0
+            else
+                this.scheduleHours = ++this.scheduleHours
+        }
+        else if(action == ' - '){
+            if(this.scheduleHours == 0)
+                this.scheduleHours = 23
+            else
+                this.scheduleHours = --this.scheduleHours
+        }
+    },
+
+    setScheduleMinutes(action){
+        if(action == ' + '){
+            if(this.scheduleMinutes == 55)
+                this.scheduleMinutes = 0
+            else
+                this.scheduleMinutes = this.scheduleMinutes + 5
+        }
+        else if(action === ' - '){
+            if(this.scheduleMinutes == 0)
+                this.scheduleMinutes = 55
+            else
+                this.scheduleMinutes = this.scheduleMinutes - 5
+        }
+    },
+
+    resetTime(){
+        this.scheduleHours = 0
+        this.scheduleMinutes = 0
+    },
+
+    saveCurrentTimeToSchedules(state){
+        const newSchedule = {
+            hours: this.scheduleHours,
+            minutes: this.scheduleMinutes,
+            onTimeTurn: this.scheduleOnOffState,
+          };
+        if(this.schedules.length >= 5){
+            console.log("too many saved schedules")
+        }
+        else
+        this.schedules = [...this.schedules, newSchedule]
+        console.log(this.schedules)
+    },
+
+    setOnOffState(){
+        console.log(this.scheduleOnOffState)
+        if(this.scheduleOnOffState === true){
+            this.scheduleOnOffState = false
+        }  
+        else if(this.scheduleOnOffState === false){
+            this.scheduleOnOffState = true
+        }
+        console.log(this.scheduleOnOffState)
+    },
+
 };
