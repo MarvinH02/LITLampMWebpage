@@ -93,7 +93,7 @@
     padding: 10px;
 }
 .colorPicker{
-    
+   padding-top: 30px; 
 }
 
 .createScheduleDisplay{
@@ -126,4 +126,9 @@
     border-style: solid;
     padding: 20px;
     background-color: rgb(255, 255, 255);
+}
+.deviceButtons{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
 }

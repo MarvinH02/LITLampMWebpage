@@ -21,7 +21,7 @@ const provider = new GoogleAuthProvider();
 function modelToPersistence(model) {
 
     return {
-        currentPage: model.currentPage,
+        //currentPage: model.currentPage,
     };
 }
 

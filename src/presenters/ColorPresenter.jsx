@@ -7,6 +7,7 @@ export default function ColorPresenter (props) {
     return (
         <div>
             <ColorView
+            currentColor={props.model.color}
             updateColorCustonEventCB={updateColorCustonEventHandlerACB}
             />
 

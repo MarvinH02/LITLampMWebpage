@@ -24,6 +24,11 @@ function DevicesView (props){
         newDevice.ip = "";
         props.addingDeviceCustomEvent();
     }
+    function deleteDeviceCB(device){
+        //console.log("Deleting Device");
+        //console.log(device);
+        props.deleteDeviceCustomEvent(device);
+    }
     function updateNewDeviceNameCB(name){
         newDevice.name = name;
         //console.log("Updating device name: " + name);
@@ -66,7 +71,12 @@ function DevicesView (props){
     }
     function selectDeviceCB(device){
         //console.log(device);
-        props.selectDeviceCustomEvent(device);
+        if (props.activeDevice && props.activeDevice.ip === device.ip){
+        }
+        else{
+            props.selectDeviceCustomEvent(device);
+        }
+        {window.location.hash = "/power"; }
     }
     function showDevicesCB(device){
         return(
@@ -81,7 +91,15 @@ function DevicesView (props){
                     subtitle= {device.ip}
                     title= {device.name}
                 >
-                {showSelectDeviceButton(device)} 
+                    <div class="deviceButtons">
+                        {showSelectDeviceButton(device)} 
+                        <v-btn
+                            onClick={() => deleteDeviceCB(device)}
+                            color="red"
+                        >
+                            <span class="material-symbols-outlined">delete</span>                
+                        </v-btn>
+                    </div>
                 </v-card>
             </div>
 
@@ -91,7 +109,7 @@ function DevicesView (props){
         if (props.activeDevice && props.activeDevice.ip === device.ip){
             return(
                 <div>
-                    <v-btn variant="tonal" disabled>Already selected</v-btn>
+                    <v-btn variant="tonal" onClick={() => selectDeviceCB(device)}>Manage Device</v-btn>
                 </div>
             );
         }

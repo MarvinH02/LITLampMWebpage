@@ -7,7 +7,7 @@ export default {
     testCounter: 3,
     poweredOn: true,
     brightness: 10,
-    color: `#000000`,
+    color: "#A800FF",
     creatingSchedule: false,
     scheduleHours: 0,
     scheduleMinutes: 0,
@@ -133,12 +133,28 @@ export default {
     },
 
     addDevice(device){
-        //console.log("Adding Device: "+device.name+" "+device.ip);
-        this.devices = [...this.devices, {name: device.name, ip: device.ip}];
+        if (device.ip && device.name)
+        {
+            if(!(this.devices.some(devices => devices.ip === device.ip))){
+                this.devices = [...this.devices, {name: device.name, ip: device.ip}];
+                //console.log("Device added: "+device.name + " " + device.ip);
+            }
+            
+            else
+                console.log("Device with entered IP already exists");
+        } 
+        else
+            console.log("Invalid device, enter name and IP");
     },
     setCurrentDevice(device){
         //console.log("Setting Active Device: "+device.name);
         this.activeDevice = device;
+    },
+    deleteDevice(device){
+        function shouldDeviceBeDeleted(deviceToCheck){
+            return deviceToCheck.ip !== device.ip;
+        }
+        this.devices = this.devices.filter(shouldDeviceBeDeleted);
     },
 
 

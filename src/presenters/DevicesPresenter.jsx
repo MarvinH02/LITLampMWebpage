@@ -10,6 +10,9 @@ export default function DevicesPresenter (props) {
     function selectDeviceCustomEventHandlerACB(device){
         props.model.setCurrentDevice(device);
     }
+    function deleteDeviceCustomEventHandlerACB(device){
+        props.model.deleteDevice(device);
+    }
     return (
         <div>
             <DevicesView
@@ -19,6 +22,7 @@ export default function DevicesPresenter (props) {
             addingDeviceCustomEvent={addingDeviceCustomEventHandlerACB}
             addDeviceCustomEvent={addDeviceCustomEventHandlerACB}
             selectDeviceCustomEvent={selectDeviceCustomEventHandlerACB}
+            deleteDeviceCustomEvent={deleteDeviceCustomEventHandlerACB}
             />
 
         </div>

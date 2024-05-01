@@ -11,6 +11,8 @@ function ColorView (props){
     }
     return(
         <div class="colorView">
+            <h2>Current Color: {props.currentColor}</h2>
+            <v-avatar color={props.currentColor ? props.currentColor : "#000000"} size="80"></v-avatar>
             <div class="colorPicker">
                 <v-color-picker onUpdate:modelValue={colorChangedCB}></v-color-picker>
             </div>
