@@ -127,8 +127,25 @@
     padding: 20px;
     background-color: rgb(255, 255, 255);
 }
+
 .deviceButtons{
     display: flex;
     justify-content: center;
     padding: 5px;
 }
+
+.gamebox{
+    justify-content: center;
+    display:flex;
+    
+    width:70%;
+    
+}
+
+.border{
+    
+    justify-content: center;
+    display:flex;
+
+}
+
