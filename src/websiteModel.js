@@ -1,3 +1,4 @@
+import { set } from "firebase/database";
 
 
 export default {
@@ -12,7 +13,9 @@ export default {
     scheduleMinutes: 0,
     schedules : [],
     scheduleOnOffState : true,
-
+    addingDevice: false,
+    devices: [],
+    activeDevice: null,
 
 
     setColor(color){
@@ -118,5 +121,25 @@ export default {
         }
         console.log(this.scheduleOnOffState)
     },
+
+    setAddingDevice(){
+        if(this.addingDevice === true){
+            this.addingDevice = false;
+        }
+        else if (this.addingDevice === false){
+            this.addingDevice = true;
+        }
+        //console.log("Adding Device: "+this.addingDevice);
+    },
+
+    addDevice(device){
+        //console.log("Adding Device: "+device.name+" "+device.ip);
+        this.devices = [...this.devices, {name: device.name, ip: device.ip}];
+    },
+    setCurrentDevice(device){
+        //console.log("Setting Active Device: "+device.name);
+        this.activeDevice = device;
+    },
+
 
 };
