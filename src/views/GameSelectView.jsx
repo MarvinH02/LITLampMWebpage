@@ -1,6 +1,9 @@
 import '../style.css';
 
 function GameSelectView (props) {
+    function goToSnakeGameHandler(){
+        {window.location.hash = "#/games/snake" }
+    }
 
     return (
         <div className='border'>
@@ -32,6 +35,7 @@ function GameSelectView (props) {
                     min-width='250px'
                     height='50vh'
                     image='src/images/snake.png'
+                    onClick={goToSnakeGameHandler}
                     >
                     <v-card-text style="padding-top:90%; text-align: center; font-size:x-large; font-family:fantasy">
                         Snake

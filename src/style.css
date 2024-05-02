@@ -217,3 +217,44 @@
 .all-font{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.snakeButtonsMiddle{
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    justify-content: center;
+
+}
+
+.snakeButton{
+    border-radius: 15px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    cursor: pointer;
+}
+.snakeView{
+    margin-top:10%;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+}
+.snakeButtons{
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+}
+.snakeButton{
+    margin: 2%;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    cursor: pointer;
+    width: 20%;
+    max-width: 200px;
+    max-height: 150px;
+}
+.snakeButtonsMiddle{
+    display:flex;
+}
