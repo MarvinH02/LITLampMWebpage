@@ -55,7 +55,7 @@ export function makeRouter(model) {
 export default function VueRoot(props) {
     
         return (
-            <div>
+            <div className='all-font'>
                 <HeaderPresenter model={props.model} />
                 
                 <RouterView />

@@ -193,6 +193,7 @@
 .team-member {
     width: 48%;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -213,3 +214,6 @@
     margin-bottom: 10px; /* You can adjust the value as needed */
 }
 
+.all-font{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
