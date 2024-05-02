@@ -3,10 +3,11 @@ import { PowerOnView } from '../views/PowerOnView.jsx';
 
 export default function PowerOnPresenter(props) {
     function togglePowerCustomEventHandlerACB() {
+        //{console.log(props.model.activeDevice.ip)}
         props.model.togglePower();
         const apiUrl = props.model.poweredOn ? 
-            `http://172.20.10.9:3000/start-demo?brightness=${props.model.brightness}` : 
-            'http://172.20.10.9:3000/stop-demo';
+            `http://${props.model.activeDevice.ip}:3000/start-demo?brightness=${props.model.brightness}` : 
+            'http://${props.model.activeDevice.ip}:3000/stop-demo';
 
         axios.get(apiUrl)
             .then(response => {
