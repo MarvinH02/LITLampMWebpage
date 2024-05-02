@@ -172,7 +172,7 @@
 }
 
 
-.center {
+.center2 {
     display: flex;
     justify-content: center;
     align-items: flex-start; /* Change align-items to flex-start */

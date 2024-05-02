@@ -156,6 +156,9 @@ export default {
         }
         this.devices = this.devices.filter(shouldDeviceBeDeleted);
     },
+    setDevices(devices){
+        this.devices = devices;
+    },
 
 
 };

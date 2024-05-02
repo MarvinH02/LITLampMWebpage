@@ -21,17 +21,36 @@ const provider = new GoogleAuthProvider();
 function modelToPersistence(model) {
 
     return {
-        //currentPage: model.currentPage,
+        currentPage: model.currentPage,
+        activeDevice: model.activeDevice,
+        devices: model.devices,
     };
 }
 
 function persistenceToModelUserData(data, model) {
-    if (!data || !data.currentPage) {
+    if (!data) {
         model.setCurrentPage(null)
+        model.setCurrentDevice(null)
+        model.setDevices([])
         return;
     }
     if (data.currentPage) {
         model.setCurrentPage(data.currentPage);
+    }
+    else{
+        model.setCurrentPage("home");
+    }
+    if (data.activeDevice) {
+        model.setCurrentDevice(data.activeDevice);
+    }
+    else{
+        model.setCurrentDevice(null);
+    }
+    if (data.devices) {
+        model.setDevices(data.devices);
+    }
+    else{
+        model.setDevices([]);
     }
 }
 
@@ -79,7 +98,7 @@ function connectToFirebase(model, watchFunction){
     }
 
     function checkACB(){
-        return [model.currentPage];
+        return [model.activeDevice, model.devices, model.currentPage];
     }
     function updateFirebaseACB(){
         saveUserToFirebase(model);
