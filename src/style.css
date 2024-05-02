@@ -150,7 +150,7 @@
 }
 
 
-.center {
+.centerAbout {
     text-align: center; /* Center the text and headers */
     display: flex;
     justify-content: center;

@@ -3,7 +3,7 @@ import '../style.css';
 
 function AboutUsView(props) {
     return (
-        <div className='center'>
+        <div className='centerAbout'>
             <div className="about-text">
                 <h2>About Us</h2>
                 <p> Welcome to The LIT Lamp M, where innovation meets accessibility. Our LED matrix redefines customization, putting the power of personalization in the hands of everyone. Designed with user-friendliness at its core, The LIT Lamp M offers a seamless interface tailored to individuals with little to no experience in programming experience. Our intuitive system empowers users to effortlessly adapt the matrix to suit their unique preferences and daily routines. Say goodbye to complexity and hello to a world of endless possibilities with The LIT Lamp M.</p>
