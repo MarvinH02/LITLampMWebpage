@@ -149,3 +149,67 @@
 
 }
 
+
+.center {
+    text-align: center; /* Center the text and headers */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 20px auto; /* Center the text horizontally */
+    text-align: justify;
+    line-height: 1.6;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.about-text h2 {
+    text-align: center; /* Center the headers */
+}
+
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Change align-items to flex-start */
+    flex-direction: column; /* Ensure the sections stack vertically */
+}
+
+.section {
+    width: 30%;
+    margin-bottom: 20px; /* Add margin between sections */
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-member {
+    width: 48%;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 768px) {
+    .center {
+        align-items: center;
+    }
+
+    .section {
+        width: 90%;
+    }
+
+    .team-member {
+        width: 100%;
+    }
+}
+
+.about-text p {
+    margin-bottom: 10px; /* You can adjust the value as needed */
+}
+
