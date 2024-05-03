@@ -267,6 +267,9 @@
     border-color: rgb(92, 62, 62);
     border-style: solid;
     flex-direction: column;
+    background-image: url("src/images/blurrybrain.png");
+    background-size: cover;
+    height:90vh;
 }
 .memorySubmitBox{
     display: flex;
@@ -281,6 +284,13 @@
 
 .snakeMenu {
     background-image: url("src/images/blurrysnake.png");
+    background-size: cover;
+    height:90vh;
+    text-align: center;
+}
+
+.memoryMenu {
+    background-image: url("src/images/blurrybrain.png");
     background-size: cover;
     height:90vh;
     text-align: center;

@@ -20,10 +20,10 @@ function SnakeView (props){
     if(!props.gameStatus){
         return(
             <div className='snakeMenu'>
-                <v-btn onClick={startSnakeHandler} style="margin-top:30%; width:25%; height:10%; ">
+                <v-btn color='#678A35'onClick={startSnakeHandler} style="margin-top:30%; width:25%; height:10%; ">
                     START
                 </v-btn>
-                <v-btn style="margin-top:30%; width:25%; height:10%;">
+                <v-btn color='#678A35'style="margin-top:30%; width:25%; height:10%;">
                     Scoreboard
                 </v-btn>
             </div>
@@ -32,14 +32,14 @@ function SnakeView (props){
     else{
         return(     //controls
             <div class="snakeView">
-                <v-btn onClick={startSnakeHandler} size='x-large'>
+                <v-btn color='#678A35'onClick={startSnakeHandler} size='x-large'>
                 STOP
                 </v-btn>
             <div class="snakeButtons">
                 <div class="snakeButton">
                 <v-btn
                         class="mx-auto"
-                        color="surface-variant"
+                        color="#35471C"
                         outlined
                         subtitle= ""
                         title=""
@@ -59,7 +59,7 @@ function SnakeView (props){
                 <div class="snakeButton">
                     <v-btn
                             class="mx-auto"
-                            color="surface-variant"
+                            color="#35471C"
                             outlined
                             subtitle= ""
                             title=""
@@ -77,7 +77,7 @@ function SnakeView (props){
                 <div class="snakeButton">
                     <v-btn
                             class="mx-auto"
-                            color="surface-variant"
+                            color="#35471C"
                             outlined
                             subtitle= ""
                             title=""
@@ -97,7 +97,7 @@ function SnakeView (props){
                 <div class="snakeButton">
                     <v-btn
                             class="mx-auto"
-                            color="surface-variant"
+                            color="#35471C"
                             outlined
                             subtitle= ""
                             title=""

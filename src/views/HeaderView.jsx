@@ -39,7 +39,8 @@ function HeaderView (props) {
         props.activeDevice && props.currentLocation == '#/schedule' || 
         props.activeDevice && props.currentLocation == '#/games' ||
         props.activeDevice && props.currentLocation == '#/custom' ||
-        props.activeDevice && props.currentLocation == '#/games/snake'){
+        props.activeDevice && props.currentLocation == '#/games/snake' ||
+        props.activeDevice && props.currentLocation == '#/games/memory'){
         return(
             <div class="header">
                 <div class="buttonsInHeader">
