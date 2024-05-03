@@ -37,6 +37,9 @@ function DisplayPresenter(props) {
             onImageUpload({ target: { files } });
         }
     }
+    function addToUserImagesCustomEventHandlerACB(image) {
+        props.model.addToUserImages(image);
+    }
 
     return (
         <DisplayView
@@ -45,6 +48,8 @@ function DisplayPresenter(props) {
             handleDrop={handleDrop}
             onImageUpload={onImageUpload}
             displayMatrix={displayMatrix}
+            addToUserImagesCustomEvent={addToUserImagesCustomEventHandlerACB}
+            userImages={props.model.userImages}
         />
     );
 }

@@ -17,7 +17,38 @@ function DisplayView (props) {
 
     // Function to handle file uploads
     function handleImageUpload(event) {
-        
+        const file = event.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = (event) => {
+            //console.log(reader.result); //original image, too large for firebase
+            const img = new Image();
+            img.src = event.target.result;
+
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                
+                canvas.width = 64;
+                canvas.height = 64;
+                ctx.drawImage(img, 0, 0, 64, 64);
+                canvas.toBlob(blob => {
+                    const blobReader = new FileReader();
+                    blobReader.readAsDataURL(blob);
+                    blobReader.onloadend = () => {
+                        console.log(blobReader.result);
+
+                        console.log("Resized image to: " + blob.size + "bytes");
+                        if (blob.size > 3000) {
+                            console.log('Warning: Image size is too large');
+                            console.log("This image was downscaled to " + blob.size + "bytes, the limit is 3000 bytes.")
+                            return;
+                        }
+                        props.addToUserImagesCustomEvent(blobReader.result);
+                    };
+                }, 'image/jpeg', 0.6); // change between 0-1 to change quality, 1 takes up a lot more space
+            };
+        }
     }
 
     // Function to simulate uploading images to a server
@@ -43,6 +74,12 @@ function DisplayView (props) {
     return (
         <div className='Gallery'>
           <h1>Gallery</h1>
+            <div>
+                Personal Images
+                {props.userImages.map((image, index) => (
+                    <img key={index} src={image} alt={`Gallery image ${index + 1}`} style={{width: '100px', height: '100px'}} />
+                ))}
+            </div>
           {categories.map((category, index) => (
                 <section key={index} className='Category_Gallery' onClick={()=>handleCategoryClick(category.name)}>
                     <h1>{category.name} Gallery</h1>

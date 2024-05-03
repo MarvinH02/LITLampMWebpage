@@ -16,7 +16,7 @@ export default {
     addingDevice: false,
     devices: [],
     activeDevice: null,
-
+    userImages: [],
 
     setColor(color){
         this.color = color;
@@ -158,6 +158,10 @@ export default {
     },
     setDevices(devices){
         this.devices = devices;
+    },
+    
+    addToUserImages(image){
+        this.userImages = [...this.userImages, image];
     },
 
 
