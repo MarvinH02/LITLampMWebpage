@@ -23,37 +23,37 @@ function AboutUsView(props) {
                         {/* <img src="person1.jpg" alt="Marvin" /> */}
                         <p><strong>Marvin</strong></p>
                         <p>Project Coordinator</p>
-                        <p>Resposibilities: Breaking down the project into tasks, assigning responsibilities, and project documentation. </p>
+                        <p>Responsibilities: Breaking down the project into tasks, assigning responsibilities, and project documentation. </p>
                     </div>
                     <div className="team-member">
                         {/* <img src="person2.jpg" alt="Gor" /> */}
                         <p><strong>Gor</strong></p>
                         <p>System Architect</p>
-                        <p>Resposibilities: Creating system designs, selecting appropriate platforms, and creating prototypes. </p>
+                        <p>Responsibilities: Creating system designs, selecting appropriate platforms, and creating prototypes. </p>
                     </div>
                     <div className="team-member">
                         {/* <img src="person3.jpg" alt="Suhaib" /> */}
                         <p><strong>Suhaib</strong></p>
                         <p>Software Developer</p>
-                        <p>Resposibilities: Creating detailed designs for software components, coding, and testing.</p>
+                        <p>Responsibilities: Creating detailed designs for software components, coding, and testing.</p>
                     </div>
                     <div className="team-member">
                         {/* <img src="person4.jpg" alt="Viktor" /> */}
                         <p><strong>Viktor</strong></p>
                         <p>Software Developer</p>
-                        <p>Resposibilities: Creating detailed designs for software components, coding, and testing.</p>
+                        <p>Responsibilities: Creating detailed designs for software components, coding, and testing.</p>
                     </div>
                     <div className="team-member">
                         {/* <img src="person5.jpg" alt="William" /> */}
                         <p><strong>William</strong></p>
                         <p>UX Designer</p>
-                        <p>Resposibilities: Creating wireframes, visual website design, and prototype testing. </p>
+                        <p>Responsibilities: Creating wireframes, visual website design, and prototype testing. </p>
                     </div>
                     <div className="team-member">
                         {/* <img src="person6.jpg" alt="Lakshana" /> */}
                         <p><strong>Lakshana</strong></p>
                         <p>Hardware Developer</p>
-                        <p>Resposibilities: Defining hardware requirements and specifications, component selection and research, and creating a hardware prototype. </p>
+                        <p>Responsibilities: Defining hardware requirements and specifications, component selection and research, and creating a hardware prototype. </p>
                     </div>
                 </div>
             </div>
