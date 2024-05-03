@@ -258,3 +258,294 @@
 .snakeButtonsMiddle{
     display:flex;
 }
+
+/*###*/
+
+.Gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+    gap: 20px;
+    padding: 20px;
+    align-items: start; /* Align items to start to handle cards of variable content gracefully */
+    margin: auto;
+    max-width: 1200px; /* Optimal width for readability and layout */
+    background: #f0f0f0; /* Neutral background that complements images */
+}
+
+.Category_Gallery {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.Category_Gallery:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.category-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.category-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.button {
+    width: 100%;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.upload-area {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    margin-top: 30px;
+    background-color: #fafafa;
+}
+
+.drag-drop-box {
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.upload-content {
+    margin-bottom: 20px;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #aaa; /* More subdued icon color */
+}
+
+.view-demo {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.view-demo:hover {
+    background-color: #0056b3;
+}
+
+.centerAbout {
+    text-align: center; /* Center the text and headers */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.about-text {
+    max-width: 800px;
+    margin: 20px auto; /* Center the text horizontally */
+    text-align: justify;
+    line-height: 1.6;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.about-text h2 {
+    text-align: center; /* Center the headers */
+}
+
+
+.center2 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Change align-items to flex-start */
+    flex-direction: column; /* Ensure the sections stack vertically */
+}
+
+.section {
+    width: 30%;
+    margin-bottom: 20px; /* Add margin between sections */
+}
+
+.team-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.team-member {
+    width: 48%;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .center {
+        align-items: center;
+    }
+
+    .section {
+        width: 90%;
+    }
+
+    .team-member {
+        width: 100%;
+    }
+}
+
+.about-text p {
+    margin-bottom: 10px; /* You can adjust the value as needed */
+}
+
+.all-font{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.snakeButtonsMiddle{
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    justify-content: center;
+
+}
+
+.snakeButton{
+    border-radius: 15px;
+    border-color: rgb(0, 0, 0);
+    border-style: solid;
+    cursor: pointer;
+}
+.snakeView{
+    margin-top:10%;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+}
+.snakeButtons{
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    display: flex;
+    justify-content: center;
+}
+.snakeButton{
+    margin: 2%;
+    border-radius: 15px;
+    border-color: rgb(255, 255, 255);
+    border-style: solid;
+    cursor: pointer;
+    width: 20%;
+    max-width: 200px;
+    max-height: 150px;
+}
+.snakeButtonsMiddle{
+    display:flex;
+/*###*/
+
+.Gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+    gap: 20px;
+    padding: 20px;
+    align-items: start; /* Align items to start to handle cards of variable content gracefully */
+    margin: auto;
+    max-width: 1200px; /* Optimal width for readability and layout */
+    background: #f0f0f0; /* Neutral background that complements images */
+}
+
+.Category_Gallery {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.Category_Gallery:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+}
+
+.category-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+.category-info {
+    padding: 10px;
+    text-align: center;
+}
+
+.button {
+    width: 100%;
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.upload-area {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    border: 2px dashed #ccc;
+    margin-top: 30px;
+    background-color: #fafafa;
+}
+
+.drag-drop-box {
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.upload-content {
+    margin-bottom: 20px;
+}
+
+.upload-icon {
+    font-size: 48px;
+    color: #aaa; /* More subdued icon color */
+}
+
+.view-demo {
+    padding: 8px 16px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.view-demo:hover {
+    background-color: #0056b3;
+}
