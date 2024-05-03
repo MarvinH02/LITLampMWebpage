@@ -20,11 +20,17 @@ function HeaderView (props) {
         window.location.hash="#/games"
         props.updateLocation(window.location.hash)
     }
+    
+    function ClickedCustomHandler() {
+        window.location.hash="#/custom"
+        props.updateLocation(window.location.hash)
+    }
 
     if(props.activeDevice && props.currentLocation == '#/power' || 
         props.activeDevice && props.currentLocation == '#/color' || 
         props.activeDevice && props.currentLocation == '#/schedule' || 
-        props.activeDevice && props.currentLocation == '#/games'){
+        props.activeDevice && props.currentLocation == '#/games' ||
+        props.activeDevice && props.currentLocation == '#/custom'){
         return(
             <div class="header">
                 <div class="buttonsInHeader">
@@ -58,7 +64,7 @@ function HeaderView (props) {
                         </span>
                         Display
                     </v-btn>
-                    <v-btn variant="tonal" class="iconButtons">
+                    <v-btn variant="tonal" class="iconButtons" onClick ={ClickedCustomHandler}>
                         <span class="material-symbols-outlined">
                         view_compact
                         </span>
