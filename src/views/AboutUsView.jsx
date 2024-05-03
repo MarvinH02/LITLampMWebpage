@@ -23,7 +23,7 @@ function AboutUsView(props) {
                         {/* <img src="person1.jpg" alt="Marvin" /> */}
                         <p><strong>Marvin</strong></p>
                         <p>Project Coordinator</p>
-                        <p>Resposibilities: Breaking down the project into tasks, assigning responsibilities,and project documentation. </p>
+                        <p>Resposibilities: Breaking down the project into tasks, assigning responsibilities, and project documentation. </p>
                     </div>
                     <div className="team-member">
                         {/* <img src="person2.jpg" alt="Gor" /> */}
