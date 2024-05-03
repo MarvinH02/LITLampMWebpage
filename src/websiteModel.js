@@ -16,6 +16,7 @@ export default {
     addingDevice: false,
     devices: [],
     activeDevice: null,
+    memoryGameGuess: null,
 
 
     setColor(color){
@@ -158,6 +159,9 @@ export default {
     },
     setDevices(devices){
         this.devices = devices;
+    },
+    setMemoryGameGuess(guess){
+        this.memoryGameGuess = guess;
     },
 
 
