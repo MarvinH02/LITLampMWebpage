@@ -34,8 +34,6 @@ function HeaderView (props) {
     if(props.activeDevice && props.currentLocation == '#/power' || 
         props.activeDevice && props.currentLocation == '#/color' || 
         props.activeDevice && props.currentLocation == '#/schedule' || 
-        props.activeDevice && props.currentLocation == '#/games' ||
-        props.activeDevice && props.currentLocation == '#/custom'){
         props.activeDevice && props.currentLocation == '#/games'||
         props.activeDevice && props.currentLocation == '#/display'){
         return(
