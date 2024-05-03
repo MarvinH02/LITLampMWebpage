@@ -7,6 +7,7 @@ import ColorPresenter from './ColorPresenter.jsx';
 import AboutUsPresenter from './AboutUsPresenter.jsx';
 import SchedulePresenter from './SchedulePresenter.jsx';
 import DevicesPresenter from './DevicesPresenter.jsx';
+import DisplayPresenter from './DisplayPresenter.jsx';
 import GameSelectPresenter from './GameSelectPresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
 import '../style.css';
@@ -42,6 +43,11 @@ export function makeRouter(model) {
             {
                 path: "/devices",
                 component: <DevicesPresenter model={model} />,
+            },
+            
+            {
+                path: "/display",
+                component: <DisplayPresenter model={model} />,
             },
             {
                 path: "/games",

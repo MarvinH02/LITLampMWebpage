@@ -6,6 +6,11 @@ function HeaderView (props) {
         props.updateLocation(window.location.hash)
     }
 
+    function goToDisplayHandler(){
+        window.location.hash = "#/display"
+        props.updateLocation(window.location.hash)
+    }
+
     function ClickedColorPageHandler() {
         window.location.hash="#/color"
         props.updateLocation(window.location.hash)
@@ -20,11 +25,13 @@ function HeaderView (props) {
         window.location.hash="#/games"
         props.updateLocation(window.location.hash)
     }
+    
 
     if(props.activeDevice && props.currentLocation == '#/power' || 
         props.activeDevice && props.currentLocation == '#/color' || 
         props.activeDevice && props.currentLocation == '#/schedule' || 
-        props.activeDevice && props.currentLocation == '#/games'){
+        props.activeDevice && props.currentLocation == '#/games'||
+        props.activeDevice && props.currentLocation == '#/display'){
         return(
             <div class="header">
                 <div class="buttonsInHeader">
@@ -52,8 +59,8 @@ function HeaderView (props) {
                         </span>
                         Games
                     </v-btn>
-                    <v-btn variant="tonal" class="iconButtons">
-                        <span class="material-symbols-outlined">
+                    <v-btn variant="tonal" class="iconButtons" onClick={goToDisplayHandler}>                     
+                       <span class="material-symbols-outlined">
                         info
                         </span>
                         Display
