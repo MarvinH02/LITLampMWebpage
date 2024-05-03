@@ -76,12 +76,15 @@ export function makeRouter(model) {
 export default function VueRoot(props) {
     
         return (
-            <div className='all-font'>
-                <HeaderPresenter model={props.model} />
+            <div className='flex-container'>
+                <div className='leftbox'><HamburgerSidebarPresenter model={props.model}/></div>
+                <div className='rightbox'>
+                    <div className='headerbox'><HeaderPresenter model={props.model} /></div>
+                    <RouterView />   
+                </div>
                 
-                <RouterView />
-    
-                <HamburgerSidebarPresenter model={props.model}/>
+                
+                
             </div>
         ) 
 }

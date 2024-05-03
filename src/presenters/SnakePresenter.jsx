@@ -13,6 +13,11 @@ export default function SnakePresenter (props) {
     function arrowRightCustomEventHandlerACB(){
         
     }
+
+    function playingGameACB(){
+        props.model.setGameStatus()
+    }
+
     return (
         <div>
             <SnakeView
@@ -20,6 +25,8 @@ export default function SnakePresenter (props) {
             arrowDownCustomEvent={arrowDownCustomEventHandlerACB}
             arrowLeftCustomEvent={arrowLeftCustomEventHandlerACB}
             arrowRightCustomEvent={arrowRightCustomEventHandlerACB}
+            playingGame={playingGameACB}
+            gameStatus={props.model.gameStatus}
             />
 
         </div>

@@ -26,11 +26,20 @@ function HeaderView (props) {
         props.updateLocation(window.location.hash)
     }
 
-    if(props.activeDevice && props.currentLocation == '#/power' || 
+    if(props.playingGame){
+        console.log("gaming mode active header hidden")
+        return(
+            <div>
+
+            </div>
+        )
+    }
+    else if(props.activeDevice && props.currentLocation == '#/power' || 
         props.activeDevice && props.currentLocation == '#/color' || 
         props.activeDevice && props.currentLocation == '#/schedule' || 
         props.activeDevice && props.currentLocation == '#/games' ||
-        props.activeDevice && props.currentLocation == '#/custom'){
+        props.activeDevice && props.currentLocation == '#/custom' ||
+        props.activeDevice && props.currentLocation == '#/games/snake'){
         return(
             <div class="header">
                 <div class="buttonsInHeader">

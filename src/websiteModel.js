@@ -16,6 +16,7 @@ export default {
     addingDevice: false,
     devices: [],
     activeDevice: null,
+    gameStatus: false,//true when you are playing game
     memoryGameGuess: null,
 
 
@@ -159,6 +160,19 @@ export default {
     },
     setDevices(devices){
         this.devices = devices;
+    },
+    setGameStatus(){
+        if(this.gameStatus===false)
+            this.gameStatus=true;
+        else{
+            this.gameStatus=false;
+        }
+        console.log("current game status: "+ this.gameStatus)
+    },
+    resetStuff(){
+        this.gameStatus= false
+        this.creatingSchedule = false
+        this.addingDevice = false
     },
     setMemoryGameGuess(guess){
         this.memoryGameGuess = guess;

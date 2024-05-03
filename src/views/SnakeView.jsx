@@ -12,8 +12,29 @@ function SnakeView (props){
     function clickedRightButton(){
         props.arrowRightCustomEvent();
     }
-    return(
-        <div class="snakeView">
+
+    function startSnakeHandler(){
+        props.playingGame()
+    }
+
+    if(!props.gameStatus){
+        return(
+            <div className='snakeMenu'>
+                <v-btn onClick={startSnakeHandler} style="margin-top:30%; width:25%; height:10%; ">
+                    START
+                </v-btn>
+                <v-btn style="margin-top:30%; width:25%; height:10%;">
+                    Scoreboard
+                </v-btn>
+            </div>
+        )
+    }
+    else{
+        return(     //controls
+            <div class="snakeView">
+                <v-btn onClick={startSnakeHandler} size='x-large'>
+                STOP
+                </v-btn>
             <div class="snakeButtons">
                 <div class="snakeButton">
                 <v-btn
@@ -25,6 +46,7 @@ function SnakeView (props){
                         width="100%"
                         height='15vh'
                         onClick={clickedUpButton}
+                        style="margin-top:50%;"
                     >
                        <span class="material-symbols-outlined">
                         north
@@ -44,6 +66,7 @@ function SnakeView (props){
                             width="100%"
                             height='15vh'
                             onClick={clickedLeftButton}
+                            style="margin-top:50%;"
                         >
                         <span class="material-symbols-outlined">
                             west
@@ -61,6 +84,7 @@ function SnakeView (props){
                             width="100%"
                             height='15vh'
                             onClick={clickedRightButton}
+                            style="margin-top:50%;"
                         >
                         <span class="material-symbols-outlined">
                             east
@@ -80,6 +104,7 @@ function SnakeView (props){
                             width="100%"
                             height='15vh'
                             onClick={clickedDownButton}
+                            style="margin-top:50%;"
                         >
                         <span class="material-symbols-outlined">
                             south
@@ -89,8 +114,9 @@ function SnakeView (props){
                 </div>
             </div>
         </div>
+        
     ); 
-
+    }
 }
     
 

@@ -7,6 +7,7 @@ export default function HamburgerSidebarPresenter (props) {
         <div>
             <HamburgerSidebarView
             user={props.model.user}
+            playingGame={props.model.gameStatus}
             />
 
         </div>

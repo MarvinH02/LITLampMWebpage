@@ -12,6 +12,7 @@ export default function HeaderPresenter(props) {
           activeDevice={props.model.activeDevice}
           updateLocation={updateLocationACB}
           currentLocation={props.model.currentPage}
+          playingGame={props.model.gameStatus}
           />
       </div>
     );

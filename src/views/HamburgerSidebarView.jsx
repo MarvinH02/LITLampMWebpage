@@ -6,10 +6,17 @@ function HamburgerSidebarView (props){
     function devicesPageHandler(){window.location.hash = "#/devices"; }
     function StatisticsHandler(){window.location.hash = "#/statistics"}
 
-
-    if(props.user){
+    if(props.playingGame){
+        console.log("gaming mode active sidebar hidden")
         return(
             <div>
+                
+            </div>
+        )
+    }
+    else if(props.user){
+        return(
+            <div className="flex-container">
                 <v-app>
                     <v-navigation-drawer
                         expand-on-hover
@@ -34,7 +41,6 @@ function HamburgerSidebarView (props){
                         </v-list>
                 </v-navigation-drawer>
                 </v-app>
-                
             </div>
         ); 
     }
