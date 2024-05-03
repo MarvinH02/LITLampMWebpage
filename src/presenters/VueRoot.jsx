@@ -10,6 +10,7 @@ import DevicesPresenter from './DevicesPresenter.jsx';
 import GameSelectPresenter from './GameSelectPresenter.jsx';
 import SnakePresenter from './SnakePresenter.jsx';
 import CustomPresenter from './CustomPresenter.jsx';
+import StatsPresenter from './StatsPresenter.jsx';
 import {createRouter, createWebHashHistory} from "vue-router";
 import '../style.css';
 
@@ -56,6 +57,10 @@ export function makeRouter(model) {
             {
                 path: "/custom",
                 component: <CustomPresenter model={model} />,
+            },
+            {
+                path: "/statistics",
+                component: <StatsPresenter model={model} />,
             },
 
         ]
