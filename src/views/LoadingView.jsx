@@ -1,4 +1,3 @@
-
 export function LoadingView () {
     return (
       <div>

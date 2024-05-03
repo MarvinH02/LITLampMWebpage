@@ -1,11 +1,11 @@
 import '../style.css';
 function CustomView(props) {
-
     return (
         <div>
-            <button>Display Current Time</button>
+            <button onClick={props.customTimeCustomEvent}>Display Current Time</button>
+            <p>Current Time: {props.customTime}</p>
         </div>
     );
 }
 
-export {CustomView};
+export { CustomView };

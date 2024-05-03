@@ -1,20 +1,18 @@
 import { CustomView } from "../views/CustomView";
+import axios from 'axios'
 
-export default function CustomPresenter(props){
-    function customCurrentTimeHandlerACB(){
-        props.model.displayTimeNow();
+
+export default function CustomPresenter(props) {
+    function customCurrentTimeHandlerACB() {
+        const currentTime = new Date().toLocaleTimeString(); //spara tiden
+        console.log('Current Time:', currentTime); //console logga tiden.
     }
-
 
     return (
         <div>
             <CustomView
-
-            customTime={props.model.customTime}
-            customTimeCustomEvent = {customCurrentTimeHandlerACB}
-            
+                customTimeCustomEvent={customCurrentTimeHandlerACB}
             />
-
         </div>
     );
 }
