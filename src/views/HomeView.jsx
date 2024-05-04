@@ -53,7 +53,7 @@ function HomeView(props) {
                         <li>Images</li>
                         <li>Timer for ON/OFF</li>
                         <li>Games</li>
-                        <li>Weather</li>
+                        <li>Weather and Temperature</li>
                         <li>Room Temperature </li>
                         <li>QR Code Sharing</li>
                         <li>Adaptive Lighting</li>
