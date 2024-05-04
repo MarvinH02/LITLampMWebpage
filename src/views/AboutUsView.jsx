@@ -1,4 +1,3 @@
-
 import '../style.css';
 
 function AboutUsView(props) {
@@ -6,18 +5,16 @@ function AboutUsView(props) {
         <div className='centerAbout'>
             <div className="about-text">
                 <h2>About Us</h2>
-                <p> Welcome to The LIT Lamp M, where innovation meets accessibility. Our LED matrix redefines customization, putting the power of personalization in the hands of everyone. Designed with user-friendliness at its core, The LIT Lamp M offers a seamless interface tailored to individuals with little to no experience in programming experience. Our intuitive system empowers users to effortlessly adapt the matrix to suit their unique preferences and daily routines. Say goodbye to complexity and hello to a world of endless possibilities with The LIT Lamp M.</p>
+                <p>Welcome to The LIT Lamp M, where innovation meets accessibility. Brought forth by a team of six dedicated students enrolled in the Projects and Project Methods course at KTH, The LIT Lamp M stands as a testament to our collaborative vision. Our aim was to create a Internet of Things product, and thus, The LIT Lamp M came into being. Driven by our passion for innovation, we embarked on this journey to redefine the landscape of LED matrix customization.</p>
             </div>
             <div className="about-text">
-                <h2>Why The LIT Lamp M</h2>
-                <p>The LIT Lamp M embodies a sophisticated user-interface via a dedicated website, facilitating secure access through Google sign-in authentication. Our platform empowers users with remote control capabilities, enabling them to seamlessly toggle the device ON and OFF for enhanced energy efficiency.</p>
-                <p> </p>
-                <p>Furthermore, our innovative system allows for extensive customization of the matrix display, offering a myriad of options including varied colors, patterns, and the integration of real-time data such as date, time, weather conditions, and room temperature. Additionally, users can engage in interactive experiences by accessing games like Snake and Tic Tac Toe directly on the matrix display.</p>
-                <p> </p>
-                <p>In addition to these features, our platform streamlines QR code sharing, providing users with the convenience of effortlessly displaying QR codes on the matrix. Moreover, the LIT Lamp M incorporates weather-adaptive lighting technology, dynamically adjusting the display to reflect current weather conditions. For instance, during a thunderstorm, the matrix will aptly showcase an image of thunder, enhancing the ambiance. The brightness levels are intelligently calibrated to adapt to the time of day, ensuring optimal visibility and comfort for users at all times.</p>
+                <h2>Our Mission</h2>
+                <p>At The LIT Lamp M, our mission is simple yet profound: to empower individuals with the ability to personalize their surroundings effortlessly. We believe that technology should be inclusive, bridging the gap between complexity and accessibility. With this principle at our core, we set out to design a device that not only redefines customization but also embodies simplicity and user-friendliness.</p>
+                <p></p>
+                <p>What sets The LIT Lamp M apart is the passion and dedication infused into every aspect of its creation. From the meticulous design process to the seamless integration of features, each element of The LIT Lamp M reflects our commitment to creating a user-friendly product.</p>
             </div>
             <div className="about-text">
-                <h2>Team</h2>
+                <h2>Meet the Team</h2>
                 <div className="team-container">
                     <div className="team-member">
                         {/* <img src="person1.jpg" alt="Marvin" /> */}
@@ -57,8 +54,13 @@ function AboutUsView(props) {
                     </div>
                 </div>
             </div>
+            <div className="about-text">
+                <h2>Join Us On Our Journey</h2>
+                <p>We invite you to join us on this exciting journey as we push the boundaries of innovation and redefine the future of customization. Whether you're a tech enthusiast or simply curious about the possibilities of IoT, there's a place for you in our community.</p>
+            </div>
         </div>
     );
 }
 
 export { AboutUsView };
+
