@@ -14,8 +14,9 @@ export default function SnakePresenter (props) {
         
     }
 
-    function playingGameACB(){
-        props.model.setGameStatus()
+    function playingSnakeGameACB(){
+        props.model.setGameStatus();
+        props.model.logGamePlayed('snake');
     }
 
     return (
@@ -25,7 +26,7 @@ export default function SnakePresenter (props) {
             arrowDownCustomEvent={arrowDownCustomEventHandlerACB}
             arrowLeftCustomEvent={arrowLeftCustomEventHandlerACB}
             arrowRightCustomEvent={arrowRightCustomEventHandlerACB}
-            playingGame={playingGameACB}
+            playingGame={playingSnakeGameACB}
             gameStatus={props.model.gameStatus}
             />
 

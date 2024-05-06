@@ -4,14 +4,15 @@ export default function MemoryGamePresenter (props) {
     function submitGuessCustomEventHandlerACB(guess){
         props.model.setMemoryGameGuess(guess);
     }
-    function playingGameACB(){
-        props.model.setGameStatus()
+    function playingMemoryGameACB(){
+        props.model.setGameStatus();
+        props.model.logGamePlayed('memory');
     }
     return (
         <div>
             <MemoryGameView
             submitGuessCustomEvent={submitGuessCustomEventHandlerACB}
-            playingGame={playingGameACB}
+            playingGame={playingMemoryGameACB}
             gameStatus={props.model.gameStatus}
             />
 
