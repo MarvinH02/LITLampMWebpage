@@ -7,7 +7,7 @@ function StatsView (props) {
   }
 
       return (
-        <div style='font-size : x-large; '>
+        <div style='font-size : x-large; font-weight:bold'>
           <div className='center'>
             <h1>Statistics</h1>
           </div>
@@ -26,7 +26,7 @@ function StatsView (props) {
           <div style='color: green;' className='center'>
             Times played Snake: {props.snakeGamesPlayed} times
           </div>
-          <div style='color: #999792;' className='center'>
+          <div style='color: #CFF0F5;' className='center'>
             Times played Memory: {props.memoryGamesPlayed} times
           </div>
           <div className='center'>
