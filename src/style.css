@@ -295,3 +295,13 @@
     height:90vh;
     text-align: center;
 }
+.centerCustom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 2%;
+}
+.customButton{
+    cursor: pointer;
+}
