@@ -30,7 +30,18 @@ function StatsView (props) {
             Times played Memory: {props.memoryGamesPlayed} times
           </div>
           <div className='center'>
-            Favourite game: {props.favouriteGame}
+            <v-card 
+              text="" 
+              variant="elevated"
+              width= '50px'
+              min-width='250px'
+              height='20vh'
+              image={props.favouriteGame === 'None yet' ? '' : props.favouriteGameIcon}
+              >
+              <v-card-text style="margin-top:45%; text-align: center; font-size:x-large; font-family:fantasy">
+                <h3>Favourite game: {props.favouriteGame}</h3>
+              </v-card-text>
+            </v-card>
           </div>
           <div className='center'>
             <v-btn size='x-large' onClick={resetStatsHandler}>

@@ -17,6 +17,7 @@ export default function StatsPresenter(props) {
       memoryGamesPlayed = { props.model.memoryGamesPlayed }
       favouriteGame = { props.model.favouriteGame }
       resetStats = { resetStatsACB }
+      favouriteGameIcon = { props.model.favouriteGameIcon }
       />
     </div>
   );

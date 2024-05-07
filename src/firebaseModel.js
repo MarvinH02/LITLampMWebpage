@@ -31,6 +31,7 @@ function modelToPersistence(model) {
         snakeGamesPlayed : model.snakeGamesPlayed,
         memoryGamesPlayed : model.memoryGamesPlayed,
         favouriteGame : model.favouriteGame,
+        favouriteGameIcon : model.favouriteGameIcon,
     };
 }
 
@@ -101,6 +102,12 @@ function persistenceToModelUserData(data, model) {
     else{
         model.setPowerState(false);
     }
+    if (data.favouriteGameIcon){
+        model.setFavouriteGameIcon(data.favouriteGameIcon);
+    }
+    else{
+        model.setFavouriteGameIcon('')
+    }
 }
 
 function saveToFirebase(model){
@@ -145,7 +152,7 @@ function connectToFirebase(model, watchFunction){
     function checkACB(){
         return [model.activeDevice, model.devices, model.currentPage, 
             model.onOffStat, model.turnOnTime, model.poweredOn, model.totalTimeOn, 
-            model.ticTacToeGamesPlayed, model.snakeGamesPlayed, model.memoryGamesPlayed, model.favouriteGame];
+            model.ticTacToeGamesPlayed, model.snakeGamesPlayed, model.memoryGamesPlayed, model.favouriteGame, model.favouriteGameIcon];
     }
     function updateFirebaseACB(){
         saveUserToFirebase(model);

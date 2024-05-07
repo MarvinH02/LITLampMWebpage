@@ -27,6 +27,7 @@ export default {
     snakeGamesPlayed: 0,
     memoryGamesPlayed: 0,
     favouriteGame: 'None yet',
+    favouriteGameIcon: '',
 
 
     setColor(color){
@@ -276,6 +277,10 @@ export default {
         this.favouriteGame = game;
     },
 
+    setFavouriteGameIcon(source){
+        this.favouriteGameIcon = source;
+    },
+
     logGamePlayed(game){
         if(this.gameStatus){
             if(game === 'snake'){
@@ -295,12 +300,18 @@ export default {
             }
         }
         else{       //update favourite game after done playing
-            if(this.snakeGamesPlayed > this.memoryGamesPlayed && this.snakeGamesPlayed > this.ticTacToeGamesPlayed)
+            if(this.snakeGamesPlayed > this.memoryGamesPlayed && this.snakeGamesPlayed > this.ticTacToeGamesPlayed){
                 this.favouriteGame = 'Snake!';
-            else if(this.memoryGamesPlayed > this.snakeGamesPlayed && this.memoryGamesPlayed > this.ticTacToeGamesPlayed)
+                this.favouriteGameIcon = 'src/images/snake.png'
+            }   
+            else if(this.memoryGamesPlayed > this.snakeGamesPlayed && this.memoryGamesPlayed > this.ticTacToeGamesPlayed){
                 this.favouriteGame = 'Memory Game!'
-            else if(this.ticTacToeGamesPlayed > this.snakeGamesPlayed && this.ticTacToeGamesPlayed > this.memoryGamesPlayed)
+                this.favouriteGameIcon = 'src/images/brain.png'
+            }
+            else if(this.ticTacToeGamesPlayed > this.snakeGamesPlayed && this.ticTacToeGamesPlayed > this.memoryGamesPlayed){
                 this.favouriteGame = 'Tic Tac Toe!'
+                this.favouriteGameIcon = 'src/images/tic.png'
+            }
         }
             
 
