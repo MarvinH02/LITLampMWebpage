@@ -18,7 +18,7 @@ function StatsView (props) {
             TOTAL TIME ON: {props.totalTimeOn} seconds
           </div>
           <div className='center'>
-            AVERAGE TIME ON PER USE: {props.totalTimeOn/(props.onOffStat/2)} seconds
+            AVERAGE TIME ON PER USE: {Math.round(props.totalTimeOn/(props.onOffStat/2))} seconds
           </div>
           <div style='color: red;' className='center'>
             Times played Tic Tac Toe: {props.ticTacToeGamesPlayed} times

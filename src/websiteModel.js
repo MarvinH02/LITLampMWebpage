@@ -18,15 +18,15 @@ export default {
     activeDevice: null,
     gameStatus: false,//true when you are playing game
     memoryGameGuess: null,
-    onOffStat: 0,   //times turned on/off stat                                  //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
+    onOffStat: 0,   //times turned on/off stat
     turnOnTime: null,       //timestamp when lamp was turned on                 //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
     turnOffTime: null,      //timestamp when lamp was turned off
-    totalTimeOn: 0,      //total time on in seconds                          //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
+    totalTimeOn: 0,      //total time on in seconds
     brightnessArray4Stats: [9],     //array to store brgihtness stats of times a certain range has been set     
-    ticTacToeGamesPlayed: 0,                                                    //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
-    snakeGamesPlayed: 0,                                                        //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
-    memoryGamesPlayed: 0,                                                       //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
-    favouriteGame: 'None yet',                                                  //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
+    ticTacToeGamesPlayed: 0,
+    snakeGamesPlayed: 0,
+    memoryGamesPlayed: 0,
+    favouriteGame: 'None yet',
 
 
     setColor(color){
@@ -66,6 +66,10 @@ export default {
         else{
             this.poweredOn = true;
         } 
+    },
+
+    setPowerState(bool){
+        this.poweredOn = bool;
     },
 
     setBrightness(number){
@@ -226,25 +230,53 @@ export default {
 
     logOnOffStat(){
         this.onOffStat = ++this.onOffStat;
-        //SHOULD ADD FIREBASE PERSISTENCE AND MAKE IT DEVICE SPECIFIC HERE
+    },
+
+    setOnOffStat(number){
+        this.onOffStat = number;
+    },
+
+    setTurnOnTime(timestamp){
+        this.turnOnTime = timestamp;
     },
 
     calculateTime(){
-        if(this.poweredOn){     //lamp was on before click i.e we are turning it off meaning calculate total time it was on
-            this.turnOffTime = new Date();
-            let temp = this.turnOffTime.valueOf() - this.turnOnTime.valueOf();      //the difference between turn on and off is the time passed, .valueOf() converts timestamp to unix time in milliseconds with starting point in the 70s or something so we can take the difference
-            temp = Math.round(temp/1000);   
-            console.log("Lamp was on for: "+ temp +" seconds")
-            this.totalTimeOn = this.totalTimeOn + temp;
-            console.log("lamp total time on: "+ this.totalTimeOn+" seconds")
-            //SHOULD ADD FIREBASE PERSISTENCE AND MAKE IT DEVICE SPECIFIC HERE SO TOTAL TIME AND START TIME IS STORED
-        }
-        else{       //lamp was off before click so we are going to turn it on, meaning "start" the time
-            this.turnOnTime = new Date();
+        if(this.turnOnTime !== null){
+            if(this.poweredOn){     //lamp was on before click i.e we are turning it off meaning calculate total time it was on
+                this.turnOffTime = new Date();
+                let temp = this.turnOffTime.valueOf() - this.turnOnTime.valueOf();      //the difference between turn on and off is the time passed, .valueOf() converts timestamp to unix time in milliseconds with starting point in the 70s or something so we can take the difference
+                temp = Math.round(temp/1000);   
+                console.log("Lamp was on for: "+ temp +" seconds")
+                this.totalTimeOn = this.totalTimeOn + temp;
+                console.log("lamp total time on: "+ this.totalTimeOn+" seconds")
+            }
+            else{       //lamp was off before click so we are going to turn it on, meaning "start" the time
+                this.turnOnTime = new Date();
+            }
         }
     },
 
-    logGamePlayed(game){        //SHOULD ADD FIREBASE PERSISTENCE
+    setTotalTimeOn(time){
+        this.totalTimeOn = time;
+    },
+
+    setTicTacToeGamesPlayed(number){
+        this.ticTacToeGamesPlayed = number;
+    },
+
+    setSnakeGamesPlayed(number){
+        this.snakeGamesPlayed = number;
+    },
+
+    setMemoryGamesPlayed(number){
+        this.memoryGamesPlayed = number;
+    },
+
+    setFavouriteGame(game){
+        this.favouriteGame = game;
+    },
+
+    logGamePlayed(game){
         if(this.gameStatus){
             if(game === 'snake'){
                 console.log("SNAKE PLAYED MUAHAAHAHAHHAA");

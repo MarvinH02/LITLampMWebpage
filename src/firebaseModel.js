@@ -21,9 +21,16 @@ const provider = new GoogleAuthProvider();
 function modelToPersistence(model) {
 
     return {
-        currentPage: model.currentPage,
-        activeDevice: model.activeDevice,
-        devices: model.devices,
+        currentPage : model.currentPage,
+        activeDevice : model.activeDevice,
+        devices : model.devices,
+        onOffStat : model.onOffStat,
+        poweredOn : model.poweredOn,
+        totalTimeOn : model.totalTimeOn,
+        ticTacToeGamesPlayed : model.ticTacToeGamesPlayed,
+        snakeGamesPlayed : model.snakeGamesPlayed,
+        memoryGamesPlayed : model.memoryGamesPlayed,
+        favouriteGame : model.favouriteGame,
     };
 }
 
@@ -51,6 +58,48 @@ function persistenceToModelUserData(data, model) {
     }
     else{
         model.setDevices([]);
+    }
+    if (data.onOffStat) {
+        model.setOnOffStat(data.onOffStat);
+    }
+    else{
+        model.setOnOffStat(0);
+    }
+    if (data.totalTimeOn){
+        model.setTotalTimeOn(data.totalTimeOn);
+    }
+    else{
+        model.setTotalTimeOn(0);
+    }
+    if (data.ticTacToeGamesPlayed){
+        model.setTicTacToeGamesPlayed(data.ticTacToeGamesPlayed);
+    }
+    else{
+        model.setTicTacToeGamesPlayed(0);
+    }
+    if (data.snakeGamesPlayed){
+        model.setSnakeGamesPlayed(data.snakeGamesPlayed);
+    }
+    else{
+        model.setSnakeGamesPlayed(0);
+    }
+    if (data.memoryGamesPlayed){
+        model.setMemoryGamesPlayed(data.memoryGamesPlayed);
+    }
+    else{
+        model.setMemoryGamesPlayed(0);
+    }
+    if (data.favouriteGame){
+        model.setFavouriteGame(data.favouriteGame)
+    }
+    else{
+        model.setFavouriteGame('None yet')
+    }
+    if (data.poweredOn){
+        model.setPowerState(data.poweredOn);
+    }
+    else{
+        model.setPowerState(false);
     }
 }
 
@@ -84,21 +133,19 @@ function connectToFirebase(model, watchFunction){
     model.ready = false;
     console.log("connectToFirebase");
     onAuthStateChanged(auth, authLoginOrLogoutACB);
-    console.log("auth state changed");
     function authLoginOrLogoutACB(){
         model.setUser(auth.currentUser);
         if(model.user){
-            console.log("1");
             fetchFromFirebase(model);
             watchFunction(checkACB, updateFirebaseACB);
-            console.log("2");
             console.log("User Logged In");
         }
-        console.log("4")
     }
 
     function checkACB(){
-        return [model.activeDevice, model.devices, model.currentPage];
+        return [model.activeDevice, model.devices, model.currentPage, 
+            model.onOffStat, model.turnOnTime, model.poweredOn, model.totalTimeOn, 
+            model.ticTacToeGamesPlayed, model.snakeGamesPlayed, model.memoryGamesPlayed, model.favouriteGame];
     }
     function updateFirebaseACB(){
         saveUserToFirebase(model);
