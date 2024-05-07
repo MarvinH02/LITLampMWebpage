@@ -36,7 +36,7 @@ export default function CustomPresenter(props) {
         <div>
             <CustomView
                 customTimeCustomEvent={customCurrentTimeHandlerACB}
-                customDateCustomEvent={customCurrentTimeHandlerACB}
+                customDateCustomEvent={customCurrentDateHandlerACB}
             />
         </div>
     );
