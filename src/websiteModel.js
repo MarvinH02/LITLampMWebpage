@@ -7,7 +7,7 @@ export default {
     testCounter: 3,
     poweredOn: false,
     brightness: 10,
-    color: "#A800FF",
+    color: "#E21515",
     creatingSchedule: false,
     scheduleHours: 0,
     scheduleMinutes: 0,
@@ -28,6 +28,10 @@ export default {
     memoryGamesPlayed: 0,
     favouriteGame: 'None yet',
     favouriteGameIcon: '',
+    snakeScoreboard: [{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0}],
+    memoryScoreboard: [{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0}],
+    showScoreboard: false,
+
 
 
     setColor(color){
@@ -50,13 +54,12 @@ export default {
         this.user = user;
     },
 
-    setCreatingSchedule(){
-        if(this.creatingSchedule === true){
-            this.creatingSchedule = false;
-        }
-        else if (this.creatingSchedule === false){
-            this.creatingSchedule = true;
-        }
+    setShowCreatingSchedule(){
+        this.creatingSchedule = true;
+    },
+
+    setHideCreatingSchedule(){
+        this.creatingSchedule = false;
     },
 
     togglePower(){
@@ -324,6 +327,38 @@ export default {
         this.snakeGamesPlayed = 0;
         this.memoryGamesPlayed = 0;
         this.favouriteGame = 'None yet';
+    },
+    
+    setShowScoreboard(){
+        this.showScoreboard = true;
+        console.log(this.scoreboard)
+    },
+
+    setHideScoreboard(){
+        this.showScoreboard = false;
+    },
+
+    addSnakeScore(score){       //for snake game, takes score in the form of an int or float or whatever and assigns it like to scoreboard like insertion sort
+        let temp = {name: this.user.displayName, score:score};
+        let anothertemp = {name:'',score:0};
+        for(let i = 0; i<10; i++){
+            if(this.snakeScoreboard[i].score < temp.score){
+                anothertemp = this.snakeScoreboard[i];
+                this.snakeScoreboard[i] = {name: temp.name, score: temp.score};
+                temp = anothertemp;
+            }
+        }
+    },
+    addMemoryScore(score){       //for memory game, takes score in the form of an int or float or whatever and assigns it like to scoreboard like insertion sort
+        let temp = {name: this.user.displayName, score:score};
+        let anothertemp = {name:'',score:0};
+        for(let i = 0; i<10; i++){
+            if(this.memoryScoreboard[i].score < temp.score){
+                anothertemp = this.memoryScoreboard[i];
+                this.memoryScoreboard[i] = {name: temp.name, score: temp.score};
+                temp = anothertemp;
+            }
+        }
     },
 
 };

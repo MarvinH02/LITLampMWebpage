@@ -22,7 +22,7 @@ function GameSelectView (props) {
                     height='50vh'
                     image='src/images/tic.png'
                     >
-                    <v-card-text style="margin-top:170%; text-align: center; font-size:x-large; font-family:fantasy">
+                    <v-card-text style="margin-top:100%; text-align: center; font-size:x-large; font-family:fantasy">
                         <h3>Tic-Tac-Toe</h3>
                     </v-card-text>
                     </v-card>
@@ -40,7 +40,7 @@ function GameSelectView (props) {
                     image='src/images/snake.png'
                     onClick={goToSnakeGameHandler}
                     >
-                    <v-card-text style="margin-top:170%; text-align: center; font-size:x-large; font-family:fantasy">
+                    <v-card-text style="margin-top:100%; text-align: center; font-size:x-large; font-family:fantasy">
                         <h3>Snake</h3>
                     </v-card-text>
                     </v-card>
@@ -58,7 +58,7 @@ function GameSelectView (props) {
                     image='src/images/brain.png'
                     onClick={goToMemoryGameHandler}
                     >
-                    <v-card-text style="margin-top:170%; text-align: center; font-size:x-large; font-family:fantasy">
+                    <v-card-text style="margin-top:100%; text-align: center; font-size:x-large; font-family:fantasy">
                         <h3>Memory</h3>
                     </v-card-text>
                     </v-card>

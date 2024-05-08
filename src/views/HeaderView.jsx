@@ -26,6 +26,10 @@ function HeaderView (props) {
         props.updateLocation(window.location.hash)
     }
 
+    function clickedHeaderHandler() {
+        props.headerClicked();
+    }
+
     if(props.playingGame){
         console.log("gaming mode active header hidden")
         return(
@@ -42,7 +46,7 @@ function HeaderView (props) {
         props.activeDevice && props.currentLocation == '#/games/snake' ||
         props.activeDevice && props.currentLocation == '#/games/memory'){
         return(
-            <div class="header">
+            <div onClick= { clickedHeaderHandler } class="header">
                 <div class="buttonsInHeader">
                     <v-btn variant="tonal" class="iconButtons" onClick={goToPowerPageHandler}>
                         <span class="material-symbols-outlined">

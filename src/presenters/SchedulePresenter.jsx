@@ -2,8 +2,12 @@ import {ScheduleView} from '../views/ScheduleView.jsx';
 
 export default function SchedulePresenter(props) {
 
-    function scheduleChangeACB(){
-        props.model.setCreatingSchedule()
+    function createScheduleACB(){
+        props.model.setShowCreatingSchedule();
+    }
+
+    function hideScheduleACB(){
+        props.model.setHideCreatingSchedule();
     }
 
     function hoursChangedACB(action){
@@ -29,17 +33,18 @@ export default function SchedulePresenter(props) {
     return (
         <div>
             <ScheduleView
-            creatingSchedule = {props.model.creatingSchedule}
-            scheduleChange = {scheduleChangeACB}
-            hours = {props.model.scheduleHours}
-            minutes = {props.model.scheduleMinutes}
-            onOffState = {props.model.scheduleOnOffState}
-            onOffStateChanged = {onOffStateChangedACB}
-            hoursChanged = {hoursChangedACB}
-            minutesChanged = {minutesChangedACB}
-            resetTime = {clickedCancelResetTimeACB}
-            saveCurrentTime = {saveScheduleACB}
-            schedules = {props.model.schedules}
+            creatingSchedule = { props.model.creatingSchedule }
+            createSchedule = { createScheduleACB }
+            hideSchedule = { hideScheduleACB }
+            hours = { props.model.scheduleHours }
+            minutes = { props.model.scheduleMinutes }
+            onOffState = { props.model.scheduleOnOffState }
+            onOffStateChanged = { onOffStateChangedACB }
+            hoursChanged = { hoursChangedACB }
+            minutesChanged = { minutesChangedACB }
+            resetTime = { clickedCancelResetTimeACB }
+            saveCurrentTime = { saveScheduleACB }
+            schedules = { props.model.schedules }
             />
         </div>
   );

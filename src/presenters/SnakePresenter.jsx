@@ -14,9 +14,21 @@ export default function SnakePresenter (props) {
         
     }
 
-    function playingSnakeGameACB(){
+    function showScoreboardACB(){
+        props.model.setShowScoreboard();
+    }
+
+    function playingSnakeGameACB() {
         props.model.setGameStatus();
         props.model.logGamePlayed('snake');
+    }
+
+    function hideScoreboardACB() {
+        props.model.setHideScoreboard();
+    }
+
+    function addScoreACB(score) {
+        props.model.addSnakeScore(score);
     }
 
     return (
@@ -28,6 +40,11 @@ export default function SnakePresenter (props) {
             arrowRightCustomEvent={arrowRightCustomEventHandlerACB}
             playingGame={playingSnakeGameACB}
             gameStatus={props.model.gameStatus}
+            showScoreboard = { props.model.showScoreboard }
+            showScoreboardClicked = { showScoreboardACB }
+            hideScoreboard = { hideScoreboardACB }
+            scoreboard = { props.model.snakeScoreboard }
+            addScore = { addScoreACB }
             />
 
         </div>
