@@ -5,10 +5,9 @@ import '../style.css';
 function DisplayView (props) {
 
     // dynamically generate the categories array by automatically counting files and fetching the first few images from specific directories
-    const categories = [
-        { name: 'Images', count: 12, images: ['/src/images/brain.png', '/src/images/snake.png', '/src/images/tic.png', '/src/images/tic.png' ] }, 
-        { name: 'Gifts', count: 15, images: ['/src/share/rgbmatrix/images/Alien.gif', '/src/share/rgbmatrix/images/angel2.gif','/src/share/rgbmatrix/images/beer.gif','/src/share/rgbmatrix/images/DancingSkeletons.gif'] }
-    ];
+    const stockImages = ['/src/images/brain.png', '/src/images/snake.png', '/src/images/tic.png', '/src/images/tic.png' ] 
+        
+    const stockGifs = ['/src/share/rgbmatrix/images/Alien.gif', '/src/share/rgbmatrix/images/angel2.gif','/src/share/rgbmatrix/images/beer.gif','/src/share/rgbmatrix/images/DancingSkeletons.gif']
     
     function handleCategoryClick(){
         props.onCategorySelect(categories);
@@ -67,45 +66,125 @@ function DisplayView (props) {
             handleImageUpload({ target: { files } });
         }
     }
+    function showPersonalImagesCB(image, index){
+        return(
+            <div class="images">
+                <v-card
+                    class="mx-auto"
+                    color="surface-variant"
+                    min-height="110"
+                    max-width="200"
+                    min-width="200"
+                    outlined
+                    subtitle= ""
+                    title= ""
+                >
+                    <v-img key={index} src={image} alt={`Gallery image ${index + 1}`}  />
+                    <div class="imageButtons">
+                        <v-btn variant="tonal" onClick={() => displayPersonalImageCB(image)}>Display Image</v-btn>
+                        <v-btn
+                            onClick={() => deleteImageCB(image)}
+                            color="red"
+                        >
+                            <span class="material-symbols-outlined">delete</span>                
+                        </v-btn>
+                    </div>
+                </v-card>
+            </div>
+
+        )
+    }
+    function showStockImagesOrGifsCB(image, index){
+        return(
+            <div class="images">
+                <v-card
+                    class="mx-auto"
+                    color="surface-variant"
+                    min-height="110"
+                    max-width="200"
+                    min-width="200"
+                    outlined
+                    subtitle= ""
+                    title= ""
+                >
+                    <v-img key={index} src={image} alt={`Gallery image ${index + 1}`}  />
+                    <div class="imageButtons">
+                        <v-btn variant="tonal" onClick={() => displayImageOrGifCB(image)}>Display Image</v-btn>
+                    </div>
+                </v-card>
+            </div>
+
+        )
+    }
+    function deleteImageCB(image){
+        props.deleteImageCustomEvent(image);
+    }
+    function displayPersonalImageCB(image){
+        props.displayPersonalImageCustomEvent(image);
+    }
+    function displayImageOrGifCB(image){
+        props.displayImageOrGifCustomEvent(image);
+    }
+    function showImagesList(){
+        if (props.userImages.length > 0){
+            return(
+                <div>
+                    {props.userImages.map(showPersonalImagesCB)}
+                </div>
+            );
+        }
+    }
+    function showStockImagesList(){
+        if (stockImages.length > 0){
+            return(
+                <div>
+                    {stockImages.map(showStockImagesOrGifsCB)}
+                </div>
+            );
+        }
+    }
+    function showStockGifsList(){
+        if (stockGifs.length > 0){
+            return(
+                <div>
+                    {stockGifs.map(showStockImagesOrGifsCB)}
+                </div>
+            );
+        }
+    }
 
    
 
     
     return (
-        <div className='Gallery'>
-          <h1>Gallery</h1>
+        <div>
+            <h1 class="center">Gallery</h1>
+            <div className='Gallery'>
             <div>
-                Personal Images
-                {props.userImages.map((image, index) => (
-                    <img key={index} src={image} alt={`Gallery image ${index + 1}`} style={{width: '100px', height: '100px'}} />
-                ))}
+                <h2>Personal Images</h2>
+                {showImagesList()}
+                {props.userImages.length === 0 && <p>No images uploaded yet</p>}
+                
             </div>
-          {categories.map((category, index) => (
-                <section key={index} className='Category_Gallery' onClick={()=>handleCategoryClick(category.name)}>
-                    <h1>{category.name} Gallery</h1>
-                    <div className="display_images_catalog">
-                    {category.images.slice(0, 4).map((image, idx) => (
-                                <img key={idx} src={image} alt={`${category.name} preview`} style={{width: '100px', height: '100px'}} />
-                            ))}
-                            <div className="category-info">
-                                <h2>{category.name}</h2>
-                                <p>{category.count} photos</p>
-                                <button className="button">View {category.name}</button>
-
-                        </div>
-                    </div>
-                    <button onClick={() => handleCategoryClick(category)}>Display All in {category.name}</button>
-                </section>
-            ))}
+            <div>
+                <h2>Stock Images</h2>
+                {showStockImagesList()}
+                {stockImages.length === 0 && <p>No images uploaded yet</p>}
+            </div>
+            <div>
+                <h2>Stock Gifs</h2>
+                {showStockGifsList()}
+                {stockGifs.length === 0 && <p>No images uploaded yet</p>}
+            </div>
 
             
             <section className='upload-area'>
                     <div className='drag-drop-box'  onDragOver={handleDragOver}
                             onDrop={handleDrop}
-                            onClick={() => document.querySelector('.file-input').click()}
+                            
                         >
                         <div className='upload-content'>
-                            <span className="material-icons-outlined upload-icon">Image_Upload</span>
+                            <span className="material-icons-outlined upload-icon">Upload Image</span>
                             <p>Choose a file or drag it here.</p>
                         </div>
                         <input
@@ -113,11 +192,12 @@ function DisplayView (props) {
                             className='file-input'
                             multiple
                             onChange={handleImageUpload}
-                            style={{ display: 'none' }} // Hide the file input but make it functional
+                             // Hide the file input but make it functional
                         />
-                        <button className="view-demo">View Demo</button>
                     </div>
             </section>
+          </div>
+           
         </div>
     );
 

@@ -316,10 +316,11 @@
 .upload-area {
     display: flex;
     justify-content: center;
-    padding: 20px;
     border: 2px dashed #ccc;
-    margin-top: 30px;
     background-color: #fafafa;
+    cursor: pointer;
+    width: 30%;
+    height: 20%;
 }
 
 .drag-drop-box {
@@ -462,7 +463,7 @@
 }
 
 .Gallery {
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
     gap: 20px;
     padding: 20px;
@@ -549,4 +550,7 @@
 
 .view-demo:hover {
     background-color: #0056b3;
+}
+.images{
+    padding: 10px;
 }

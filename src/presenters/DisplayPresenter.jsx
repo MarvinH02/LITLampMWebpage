@@ -40,6 +40,15 @@ function DisplayPresenter(props) {
     function addToUserImagesCustomEventHandlerACB(image) {
         props.model.addToUserImages(image);
     }
+    function deleteImageCustomEventHandlerACB(image) {
+        props.model.deleteImage(image);
+    }
+    function displayPersonalImageCustomEventHandlerACB(image) {
+        //skriv kod för att visa personal bild på led-matrix, image är en bas 64 binär string
+    }
+    function displayImageOrGifCustomEventHandlerACB(image) {
+        //skriv kod för att visa bild eller gif på led-matrix, image är path till bild eller gif
+    }
 
     return (
         <DisplayView
@@ -50,6 +59,9 @@ function DisplayPresenter(props) {
             displayMatrix={displayMatrix}
             addToUserImagesCustomEvent={addToUserImagesCustomEventHandlerACB}
             userImages={props.model.userImages}
+            deleteImageCustomEvent={deleteImageCustomEventHandlerACB}
+            displayPersonalImageCustomEvent={displayPersonalImageCustomEventHandlerACB}
+            displayImageOrGifCustomEvent={displayImageOrGifCustomEventHandlerACB}
         />
     );
 }

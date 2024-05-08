@@ -166,6 +166,12 @@ export default {
     setUserImages(images){
         this.userImages = images;
     },
+    deleteImage(image){
+        function shouldImageBeDeleted(imageToCheck){
+            return imageToCheck !== image;
+        }
+        this.userImages = this.userImages.filter(shouldImageBeDeleted);
+    },
 
 
 };
