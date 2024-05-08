@@ -57,6 +57,9 @@ function persistenceToModelUserData(data, model) {
     if (data.userImages) {
         model.setUserImages(data.userImages);
     }
+    else{
+        model.setUserImages([]);
+    }
 }
 
 function saveToFirebase(model){
