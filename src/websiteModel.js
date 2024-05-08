@@ -163,6 +163,9 @@ export default {
     addToUserImages(image){
         this.userImages = [...this.userImages, image];
     },
+    setUserImages(images){
+        this.userImages = images;
+    },
 
 
 };

@@ -24,6 +24,7 @@ function modelToPersistence(model) {
         currentPage: model.currentPage,
         activeDevice: model.activeDevice,
         devices: model.devices,
+        userImages: model.userImages,
     };
 }
 
@@ -32,6 +33,7 @@ function persistenceToModelUserData(data, model) {
         model.setCurrentPage(null)
         model.setCurrentDevice(null)
         model.setDevices([])
+        model.setUserImages([])
         return;
     }
     if (data.currentPage) {
@@ -51,6 +53,9 @@ function persistenceToModelUserData(data, model) {
     }
     else{
         model.setDevices([]);
+    }
+    if (data.userImages) {
+        model.setUserImages(data.userImages);
     }
 }
 
@@ -98,7 +103,7 @@ function connectToFirebase(model, watchFunction){
     }
 
     function checkACB(){
-        return [model.activeDevice, model.devices, model.currentPage];
+        return [model.activeDevice, model.devices, model.currentPage, model.userImages];
     }
     function updateFirebaseACB(){
         saveUserToFirebase(model);
