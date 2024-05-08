@@ -341,22 +341,76 @@ export default {
     addSnakeScore(score){       //for snake game, takes score in the form of an int or float or whatever and assigns it like to scoreboard like insertion sort
         let temp = {name: this.user.displayName, score:score};
         let anothertemp = {name:'',score:0};
-        for(let i = 0; i<10; i++){
-            if(this.snakeScoreboard[i].score < temp.score){
-                anothertemp = this.snakeScoreboard[i];
-                this.snakeScoreboard[i] = {name: temp.name, score: temp.score};
-                temp = anothertemp;
+        let appeared = false;
+        let dupeScorePos = null;
+
+        for(let i = 0; i<10; i++){      //check if user has a place in the scoreboard
+            if(temp.name === this.snakeScoreboard[i].name){
+                appeared = true;
+                dupeScorePos = i;
             }
         }
+        if(appeared && this.snakeScoreboard[dupeScorePos].score < temp.score){      //if already in scoreboard and current saved score is less than new score, swap
+            this.snakeScoreboard[dupeScorePos] = temp;
+            for(let i = 0; i<10; i++){
+                temp = this.snakeScoreboard[i];
+                for(let a = i+1; a<10; a++){
+                if(this.snakeScoreboard[a].score > temp.score){
+                    anothertemp = temp;
+                    this.snakeScoreboard[i] = this.snakeScoreboard[a];
+                    this.snakeScoreboard[a] = anothertemp;
+                    temp = this.snakeScoreboard[i];
+                }
+                }
+            }
+             
+        }
+        else if(appeared === false){
+            for(let i = 0; i<10; i++){
+                if(this.snakeScoreboard[i].score < temp.score){
+                    anothertemp = this.snakeScoreboard[i];
+                    this.snakeScoreboard[i] = {name: temp.name, score: temp.score};
+                    temp = anothertemp;
+                }
+            }
+        }
+        
     },
+
     addMemoryScore(score){       //for memory game, takes score in the form of an int or float or whatever and assigns it like to scoreboard like insertion sort
         let temp = {name: this.user.displayName, score:score};
         let anothertemp = {name:'',score:0};
-        for(let i = 0; i<10; i++){
-            if(this.memoryScoreboard[i].score < temp.score){
-                anothertemp = this.memoryScoreboard[i];
-                this.memoryScoreboard[i] = {name: temp.name, score: temp.score};
-                temp = anothertemp;
+        let appeared = false;
+        let dupeScorePos = null;
+
+        for(let i = 0; i<10; i++){      //check if user has a place in the scoreboard
+            if(temp.name === this.memoryScoreboard[i].name){
+                appeared = true;
+                dupeScorePos = i;
+            }
+        }
+        if(appeared && this.memoryScoreboard[dupeScorePos].score < temp.score){      //if already in scoreboard and current saved score is less than new score, swap
+            this.memoryScoreboard[dupeScorePos] = temp;
+            for(let i = 0; i<10; i++){
+                temp = this.memoryScoreboard[i];
+                for(let a = i+1; a<10; a++){
+                if(this.memoryScoreboard[a].score > temp.score){
+                    anothertemp = temp;
+                    this.memoryScoreboard[i] = this.memoryScoreboard[a];
+                    this.memoryScoreboard[a] = anothertemp;
+                    temp = this.memoryScoreboard[i];
+                }
+                }
+            }
+             
+        }
+        else if(appeared === false){
+            for(let i = 0; i<10; i++){
+                if(this.memoryScoreboard[i].score < temp.score){
+                    anothertemp = this.memoryScoreboard[i];
+                    this.memoryScoreboard[i] = {name: temp.name, score: temp.score};
+                    temp = anothertemp;
+                }
             }
         }
     },

@@ -17,6 +17,7 @@ function MemoryGameView (props){
     function submitGuessCB(){
         console.log("Guess Submitted: " + guess);
         props.submitGuessCustomEvent(guess);
+        //props.addScore(1000)
     }
 
     function startMemoryHandler(){
