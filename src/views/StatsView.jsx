@@ -44,6 +44,9 @@ function StatsView (props) {
             </v-card>
           </div>
           <div className='center'>
+            
+          </div>
+          <div className='center'>
             <v-btn size='x-large' onClick={resetStatsHandler}>
               RESET STATS
             </v-btn>

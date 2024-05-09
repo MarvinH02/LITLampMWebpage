@@ -8,8 +8,6 @@ function HamburgerSidebarView (props){
     
     function clickedSidebarHandler(){
         props.sidebarClicked();
-        props.model.setHideCreatingSchedule();
-        props.model.resetTime();
     }
 
     if(props.playingGame){

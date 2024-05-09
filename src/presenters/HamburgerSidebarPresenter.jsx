@@ -5,6 +5,8 @@ export default function HamburgerSidebarPresenter (props) {
 
     function sidebarClickedACB(){
         props.model.setHideScoreboard();
+        props.model.setHideCreatingSchedule();
+        props.model.resetTime();
     }
     return (
         <div>

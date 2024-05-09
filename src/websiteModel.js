@@ -22,7 +22,7 @@ export default {
     turnOnTime: null,       //timestamp when lamp was turned on                 //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE
     turnOffTime: null,      //timestamp when lamp was turned off
     totalTimeOn: 0,      //total time on in seconds
-    brightnessArray4Stats: [9],     //array to store brgihtness stats of times a certain range has been set     
+    brightnessArray4Stats: [0,0,0,0,0,0,0,0,0,0],     //array to store brgihtness stats of times a certain range has been set    //SHOULD ADD FIREBASE PERSISTENCE, REMOVE THIS WHEN DONE 
     ticTacToeGamesPlayed: 0,
     snakeGamesPlayed: 0,
     memoryGamesPlayed: 0,
@@ -80,7 +80,6 @@ export default {
         if (this.brightness !== number){
             this.brightness = number;
 
-            /* for stats I want to store a 1 in an array everytime a brightness within a range is set to plot a graph of most used brightness settings but the array that is returned is weird...
             if (number <= 10) {
                 console.log("case less than or 10");
                 this.brightnessArray4Stats[0]++;
@@ -114,7 +113,7 @@ export default {
             } else {
                 console.log("ROH OH RHAGGY: " + number);
             }
-            console.log(this.brightnessArray4Stats);*/
+            console.log(this.brightnessArray4Stats);
         }
     },
 

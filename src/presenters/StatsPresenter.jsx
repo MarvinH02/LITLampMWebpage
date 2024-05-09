@@ -18,6 +18,7 @@ export default function StatsPresenter(props) {
       favouriteGame = { props.model.favouriteGame }
       resetStats = { resetStatsACB }
       favouriteGameIcon = { props.model.favouriteGameIcon }
+      brightness = { props.model.brightnessArray4Stats }
       />
     </div>
   );
