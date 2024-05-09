@@ -3,6 +3,7 @@ import { getDatabase, ref, get, set, onValue } from "firebase/database";
 
 
 const PATH = "LIT-LAMP-M";
+const PATH_GLOBAL = "LIT-LAMP-M-Global";
 
 import firebaseConfig from "/src/firebaseConfig.js";
 const app= initializeApp(firebaseConfig)
@@ -34,7 +35,31 @@ function modelToPersistence(model) {
         favouriteGameIcon : model.favouriteGameIcon,
     };
 }
-
+function modelToPersistenceGlobal(model) {
+    return {
+        snakeScoreboard : model.snakeScoreboard,
+        memoryScoreboard : model.memoryScoreboard,
+    };
+}
+function persistanceToModelGlobalData(data, model) {
+    if (!data) {
+        model.setSnakeScoreboard([{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0}]);
+        model.setMemoryScoreboard([{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0}]);
+        return;
+    }
+    if (data.snakeScoreboard) {
+        model.setSnakeScoreboard(data.snakeScoreboard);
+    }
+    else{
+        model.setSnakeScoreboard([{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0}]);
+    }
+    if (data.memoryScoreboard) {
+        model.setMemoryScoreboard(data.memoryScoreboard);
+    }
+    else{
+        model.setMemoryScoreboard([{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0},{name: 'Player', score: 0}]);
+    }
+}
 function persistenceToModelUserData(data, model) {
     if (!data) {
         model.setCurrentPage(null)
@@ -111,25 +136,40 @@ function persistenceToModelUserData(data, model) {
 }
 
 function saveToFirebase(model){
-    if(model.ready === true)
-        set(ref(db, PATH),modelToPersistence(model));
+    if(model.ready === true){
+        console.log("saveGlobalToFirebase<<<<<<<<<<<<<<<<<<<");
+        set(ref(db, PATH_GLOBAL),modelToPersistenceGlobal(model));
+    }
+    else{
+        console.log("Not ready to save to firebase zzzzzz");
+    }
 }
 function saveUserToFirebase(model){
-    console.log("saveUserToFirebase");
     if(model.ready && model.user){
+        //console.log("saveUserToFirebase");
         set(ref(db, PATH + "/" + model.user.uid), modelToPersistence(model));
+    }
+    else{
+        console.log("Not ready to save to firebase xxxxxxxxxx");
     }
 
 }
 
 function fetchFromFirebase(model) {
-    console.log("fetchFromFirebase");
+    //console.log("fetchFromFirebase");
     if(model.user){
         model.ready=false;
-        return get(ref(db, PATH + "/" + model.user.uid))
+        const userData = get(ref(db, PATH + "/" + model.user.uid))
             .then(function convertToModelACB(savedState){
                 return persistenceToModelUserData(savedState.val(), model);
-            })
+            });
+
+        const globalData = get(ref(db, PATH_GLOBAL))
+            .then(function convertToModelACB(savedState){
+                return persistanceToModelGlobalData(savedState.val(), model);
+            });
+        
+        return Promise.all([globalData, userData])
             .then(function modelReadyCB() {
                 model.ready = true;
             });
@@ -144,17 +184,28 @@ function connectToFirebase(model, watchFunction){
         model.setUser(auth.currentUser);
         if(model.user){
             fetchFromFirebase(model);
+            watchFunction(checkGlobalACB, updateGlobalFirebaseACB);
             watchFunction(checkACB, updateFirebaseACB);
             console.log("User Logged In");
         }
     }
 
     function checkACB(){
+        console.log("checking USER ACB");
         return [model.activeDevice, model.devices, model.currentPage, 
             model.onOffStat, model.turnOnTime, model.poweredOn, model.totalTimeOn, 
             model.ticTacToeGamesPlayed, model.snakeGamesPlayed, model.memoryGamesPlayed, model.favouriteGame, model.favouriteGameIcon];
     }
+    function checkGlobalACB(){
+        console.log("checking Global ACB");
+        return [model.snakeScoreboard, model.memoryScoreboard];
+    }
+    function updateGlobalFirebaseACB(){
+        console.log("updating Global FirebaseACB--------------");
+        saveToFirebase(model);
+    }
     function updateFirebaseACB(){
+        console.log("updating User FirebaseACB");
         saveUserToFirebase(model);
     }
     model.ready = true;

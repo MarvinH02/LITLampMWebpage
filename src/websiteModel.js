@@ -343,23 +343,24 @@ export default {
         let anothertemp = {name:'',score:0};
         let appeared = false;
         let dupeScorePos = null;
+        let NewTempScoreboard = [...this.snakeScoreboard];
 
         for(let i = 0; i<10; i++){      //check if user has a place in the scoreboard
-            if(temp.name === this.snakeScoreboard[i].name){
+            if(temp.name === NewTempScoreboard[i].name){
                 appeared = true;
                 dupeScorePos = i;
             }
         }
-        if(appeared && this.snakeScoreboard[dupeScorePos].score < temp.score){      //if already in scoreboard and current saved score is less than new score, swap
-            this.snakeScoreboard[dupeScorePos] = temp;
+        if(appeared && NewTempScoreboard[dupeScorePos].score < temp.score){      //if already in scoreboard and current saved score is less than new score, swap
+            NewTempScoreboard[dupeScorePos] = temp;
             for(let i = 0; i<10; i++){
-                temp = this.snakeScoreboard[i];
+                temp = NewTempScoreboard[i];
                 for(let a = i+1; a<10; a++){
-                if(this.snakeScoreboard[a].score > temp.score){
+                if(NewTempScoreboard[a].score > temp.score){
                     anothertemp = temp;
-                    this.snakeScoreboard[i] = this.snakeScoreboard[a];
-                    this.snakeScoreboard[a] = anothertemp;
-                    temp = this.snakeScoreboard[i];
+                    NewTempScoreboard[i] = NewTempScoreboard[a];
+                    NewTempScoreboard[a] = anothertemp;
+                    temp = NewTempScoreboard[i];
                 }
                 }
             }
@@ -367,13 +368,14 @@ export default {
         }
         else if(appeared === false){
             for(let i = 0; i<10; i++){
-                if(this.snakeScoreboard[i].score < temp.score){
-                    anothertemp = this.snakeScoreboard[i];
-                    this.snakeScoreboard[i] = {name: temp.name, score: temp.score};
+                if(NewTempScoreboard[i].score < temp.score){
+                    anothertemp = NewTempScoreboard[i];
+                    NewTempScoreboard[i] = {name: temp.name, score: temp.score};
                     temp = anothertemp;
                 }
             }
         }
+        this.snakeScoreboard = NewTempScoreboard;
         
     },
 
@@ -382,23 +384,24 @@ export default {
         let anothertemp = {name:'',score:0};
         let appeared = false;
         let dupeScorePos = null;
+        let NewTempScoreboard = [...this.memoryScoreboard];
 
         for(let i = 0; i<10; i++){      //check if user has a place in the scoreboard
-            if(temp.name === this.memoryScoreboard[i].name){
+            if(temp.name === NewTempScoreboard[i].name){
                 appeared = true;
                 dupeScorePos = i;
             }
         }
-        if(appeared && this.memoryScoreboard[dupeScorePos].score < temp.score){      //if already in scoreboard and current saved score is less than new score, swap
-            this.memoryScoreboard[dupeScorePos] = temp;
+        if(appeared && NewTempScoreboard[dupeScorePos].score < temp.score){      //if already in scoreboard and current saved score is less than new score, swap
+            NewTempScoreboard[dupeScorePos] = temp;
             for(let i = 0; i<10; i++){
-                temp = this.memoryScoreboard[i];
+                temp = NewTempScoreboard[i];
                 for(let a = i+1; a<10; a++){
-                if(this.memoryScoreboard[a].score > temp.score){
+                if(NewTempScoreboard[a].score > temp.score){
                     anothertemp = temp;
-                    this.memoryScoreboard[i] = this.memoryScoreboard[a];
-                    this.memoryScoreboard[a] = anothertemp;
-                    temp = this.memoryScoreboard[i];
+                    NewTempScoreboard[i] = NewTempScoreboard[a];
+                    NewTempScoreboard[a] = anothertemp;
+                    temp = NewTempScoreboard[i];
                 }
                 }
             }
@@ -406,13 +409,20 @@ export default {
         }
         else if(appeared === false){
             for(let i = 0; i<10; i++){
-                if(this.memoryScoreboard[i].score < temp.score){
-                    anothertemp = this.memoryScoreboard[i];
-                    this.memoryScoreboard[i] = {name: temp.name, score: temp.score};
+                if(NewTempScoreboard[i].score < temp.score){
+                    anothertemp = NewTempScoreboard[i];
+                    NewTempScoreboard[i] = {name: temp.name, score: temp.score};
                     temp = anothertemp;
                 }
             }
         }
+        this.memoryScoreboard = NewTempScoreboard;
+    },
+    setSnakeScoreboard(scoreboard){
+        this.snakeScoreboard = scoreboard;
+    },
+    setMemoryScoreboard(scoreboard){
+        this.memoryScoreboard = scoreboard;
     },
 
 };
