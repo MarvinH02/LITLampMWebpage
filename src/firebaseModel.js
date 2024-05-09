@@ -9,8 +9,8 @@ import firebaseConfig from "/src/firebaseConfig.js";
 const app= initializeApp(firebaseConfig)
 const db= getDatabase(app)
 
-console.log("Database")
-console.log(db)
+//console.log("Database")
+//console.log(db)
 
 //set(ref(db, PATH+"/test"), "Kossa");
 import {getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut} from "firebase/auth";
@@ -144,11 +144,11 @@ function persistenceToModelUserData(data, model) {
 
 function saveToFirebase(model){
     if(model.ready === true){
-        console.log("saveGlobalToFirebase<<<<<<<<<<<<<<<<<<<");
+        //console.log("saveGlobalToFirebase<<<<<<<<<<<<<<<<<<<");
         set(ref(db, PATH_GLOBAL),modelToPersistenceGlobal(model));
     }
     else{
-        console.log("Not ready to save to firebase zzzzzz");
+        //console.log("Not ready to save to firebase zzzzzz");
     }
 }
 function saveUserToFirebase(model){
@@ -157,7 +157,7 @@ function saveUserToFirebase(model){
         set(ref(db, PATH + "/" + model.user.uid), modelToPersistence(model));
     }
     else{
-        console.log("Not ready to save to firebase xxxxxxxxxx");
+        //console.log("Not ready to save to firebase xxxxxxxxxx");
     }
 
 }
@@ -185,7 +185,7 @@ function fetchFromFirebase(model) {
 
 function connectToFirebase(model, watchFunction){
     model.ready = false;
-    console.log("connectToFirebase");
+    //console.log("connectToFirebase");
     onAuthStateChanged(auth, authLoginOrLogoutACB);
     function authLoginOrLogoutACB(){
         model.setUser(auth.currentUser);
@@ -193,26 +193,26 @@ function connectToFirebase(model, watchFunction){
             fetchFromFirebase(model);
             watchFunction(checkGlobalACB, updateGlobalFirebaseACB);
             watchFunction(checkACB, updateFirebaseACB);
-            console.log("User Logged In");
+            //console.log("User Logged In");
         }
     }
 
     function checkACB(){
-        console.log("checking USER ACB");
+        //console.log("checking USER ACB");
         return [model.activeDevice, model.devices, model.currentPage, 
             model.onOffStat, model.turnOnTime, model.poweredOn, model.totalTimeOn, 
             model.ticTacToeGamesPlayed, model.snakeGamesPlayed, model.memoryGamesPlayed, model.favouriteGame, model.favouriteGameIcon];
     }
     function checkGlobalACB(){
-        console.log("checking Global ACB");
+        //console.log("checking Global ACB");
         return [model.snakeScoreboard, model.memoryScoreboard];
     }
     function updateGlobalFirebaseACB(){
-        console.log("updating Global FirebaseACB--------------");
+        //console.log("updating Global FirebaseACB--------------");
         saveToFirebase(model);
     }
     function updateFirebaseACB(){
-        console.log("updating User FirebaseACB");
+        //console.log("updating User FirebaseACB");
         saveUserToFirebase(model);
     }
     model.ready = true;

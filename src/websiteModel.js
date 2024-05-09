@@ -36,7 +36,7 @@ export default {
 
     setColor(color){
         this.color = color;
-        console.log("Color in model: "+this.color);
+        ////console.log("Color in model: "+this.color);
     },
 
     setCurrentPage(page) {
@@ -47,7 +47,7 @@ export default {
 
     testCounterPlus(){
         this.testCounter++;
-        console.log("Test Counter: "+this.testCounter);
+        //console.log("Test Counter: "+this.testCounter);
     },
 
     setUser(user) {
@@ -63,7 +63,7 @@ export default {
     },
 
     togglePower(){
-        console.log("Power Toggled");
+        //console.log("Power Toggled");
         if(this.poweredOn === true){
             this.poweredOn = false;
         }
@@ -81,39 +81,39 @@ export default {
             this.brightness = number;
 
             if (number <= 10) {
-                console.log("case less than or 10");
+                //console.log("case less than or 10");
                 this.brightnessArray4Stats[0]++;
             } else if (number > 10 && number <= 20) {
-                console.log("case between 10 and 20");
+                //console.log("case between 10 and 20");
                 this.brightnessArray4Stats[1]++;
             } else if (number > 20 && number <= 30) {
-                console.log("case between 20 and 30");
+                //console.log("case between 20 and 30");
                 this.brightnessArray4Stats[2]++;
             } else if (number > 30 && number <= 40) {
-                console.log("case between 30 and 40");
+                //console.log("case between 30 and 40");
                 this.brightnessArray4Stats[3]++;
             } else if (number > 40 && number <= 50) {
-                console.log("case between 40 and 50");
+                //console.log("case between 40 and 50");
                 this.brightnessArray4Stats[4]++;
             } else if (number > 50 && number <= 60) {
-                console.log("case between 50 and 60");
+                //console.log("case between 50 and 60");
                 this.brightnessArray4Stats[5]++;
             } else if (number > 60 && number <= 70) {
-                console.log("case between 60 and 70");
+                //console.log("case between 60 and 70");
                 this.brightnessArray4Stats[6]++;
             } else if (number > 70 && number <= 80) {
-                console.log("case between 70 and 80");
+                //console.log("case between 70 and 80");
                 this.brightnessArray4Stats[7]++;
             } else if (number > 80 && number <= 90) {
-                console.log("case between 80 and 90");
+                //console.log("case between 80 and 90");
                 this.brightnessArray4Stats[8]++;
             } else if (number > 90 && number <= 100) {
-                console.log("case between 90 and 100");
+                //console.log("case between 90 and 100");
                 this.brightnessArray4Stats[9]++;
             } else {
-                console.log("ROH OH RHAGGY: " + number);
+                //console.log("ROH OH RHAGGY: " + number);
             }
-            console.log(this.brightnessArray4Stats);
+            //console.log(this.brightnessArray4Stats);
         }
     },
 
@@ -159,22 +159,22 @@ export default {
             onTimeTurn: this.scheduleOnOffState,
           };
         if(this.schedules.length >= 5){
-            console.log("too many saved schedules")
+            //console.log("too many saved schedules")
         }
         else
         this.schedules = [...this.schedules, newSchedule]
-        console.log(this.schedules)
+        //console.log(this.schedules)
     },
 
     setOnOffState(){
-        console.log(this.scheduleOnOffState)
+        //console.log(this.scheduleOnOffState)
         if(this.scheduleOnOffState === true){
             this.scheduleOnOffState = false
         }  
         else if(this.scheduleOnOffState === false){
             this.scheduleOnOffState = true
         }
-        console.log(this.scheduleOnOffState)
+        //console.log(this.scheduleOnOffState)
     },
 
     setAddingDevice(){
@@ -220,7 +220,7 @@ export default {
         else{
             this.gameStatus=false;
         }
-        console.log("current game status: "+ this.gameStatus)
+        //console.log("current game status: "+ this.gameStatus)
     },
     resetStuff(){
         this.gameStatus= false
@@ -244,26 +244,26 @@ export default {
     },
 
     calculateTime(){
-        console.log("time before calculatetime "+ this.turnOnTime)
+        //console.log("time before calculatetime "+ this.turnOnTime)
         if(this.turnOnTime !== null){
             if(this.poweredOn){     //lamp was on before click i.e we are turning it off meaning calculate total time it was on
                 this.turnOffTime = new Date();
-                let temp = this.turnOffTime.valueOf() - this.turnOnTime.valueOf();      //the difference between turn on and off is the time passed, .valueOf() converts timestamp to unix time in milliseconds with starting point in the 70s or something so we can take the difference
+                let temp = this.turnOffTime.valueOf() - this.turnOnTime;      //the difference between turn on and off is the time passed, .valueOf() converts timestamp to unix time in milliseconds with starting point in the 70s or something so we can take the difference
                 temp = Math.round(temp/1000);   
-                console.log("Lamp was on for: "+ temp +" seconds")
+                //console.log("Lamp was on for: "+ temp +" seconds")
                 this.totalTimeOn = this.totalTimeOn + temp;
-                console.log("lamp total time on: "+ this.totalTimeOn+" seconds")
+                //console.log("lamp total time on: "+ this.totalTimeOn+" seconds")
             }
             else{       //lamp was off before click so we are going to turn it on, meaning "start" the time
-                
-                this.turnOnTime = new Date();
+                //console.log("HOIIIIIIIIIIIIIIIIIIIIIIIIIII")
+                this.turnOnTime = (new Date()).valueOf();
+                //console.log(this.turnOnTime)
             }
         }
         else{
-            console.log("shi null")
+            //console.log("shi null")
             
-            this.turnOnTime = new Date();
-            console.log("time after "+ this.turnOnTime)
+            this.turnOnTime = (new Date()).valueOf();
         }
     },
 
@@ -294,19 +294,19 @@ export default {
     logGamePlayed(game){
         if(this.gameStatus){
             if(game === 'snake'){
-                console.log("SNAKE PLAYED MUAHAAHAHAHHAA");
+                //console.log("SNAKE PLAYED MUAHAAHAHAHHAA");
                 this.snakeGamesPlayed++;
-                console.log(this.snakeGamesPlayed);
+                //console.log(this.snakeGamesPlayed);
             }
             else if(game === 'memory'){
-                console.log("memory played ;)");
+                //console.log("memory played ;)");
                 this.memoryGamesPlayed++;
-                console.log(this.memoryGamesPlayed);
+                //console.log(this.memoryGamesPlayed);
             }
             else if(game === 'tictactoe'){
-                console.log("TOE TOE TOE");
+                //console.log("TOE TOE TOE");
                 this.ticTacToeGamesPlayed++;
-                console.log(this.ticTacToeGamesPlayed);
+                //console.log(this.ticTacToeGamesPlayed);
             }
         }
         else{       //update favourite game after done playing
@@ -338,7 +338,7 @@ export default {
     
     setShowScoreboard(){
         this.showScoreboard = true;
-        console.log(this.scoreboard)
+        //console.log(this.scoreboard)
     },
 
     setHideScoreboard(){
