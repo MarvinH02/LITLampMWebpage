@@ -244,6 +244,7 @@ export default {
     },
 
     calculateTime(){
+        console.log("time before calculatetime "+ this.turnOnTime)
         if(this.turnOnTime !== null){
             if(this.poweredOn){     //lamp was on before click i.e we are turning it off meaning calculate total time it was on
                 this.turnOffTime = new Date();
@@ -254,8 +255,15 @@ export default {
                 console.log("lamp total time on: "+ this.totalTimeOn+" seconds")
             }
             else{       //lamp was off before click so we are going to turn it on, meaning "start" the time
+                
                 this.turnOnTime = new Date();
             }
+        }
+        else{
+            console.log("shi null")
+            
+            this.turnOnTime = new Date();
+            console.log("time after "+ this.turnOnTime)
         }
     },
 

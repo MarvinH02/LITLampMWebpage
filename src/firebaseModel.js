@@ -33,6 +33,7 @@ function modelToPersistence(model) {
         memoryGamesPlayed : model.memoryGamesPlayed,
         favouriteGame : model.favouriteGame,
         favouriteGameIcon : model.favouriteGameIcon,
+        turnOnTime : model.turnOnTime,
     };
 }
 function modelToPersistenceGlobal(model) {
@@ -132,6 +133,12 @@ function persistenceToModelUserData(data, model) {
     }
     else{
         model.setFavouriteGameIcon('')
+    }
+    if (data.turnOnTime){
+        model.setTurnOnTime(data.turnOnTime)
+    }
+    else{
+        model.setTurnOnTime(null)
     }
 }
 
