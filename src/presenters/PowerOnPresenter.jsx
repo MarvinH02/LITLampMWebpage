@@ -3,9 +3,8 @@ import { PowerOnView } from '../views/PowerOnView.jsx';
 
 export default function PowerOnPresenter(props) {
     function togglePowerCustomEventHandlerACB() {
-        //{console.log(props.model.activeDevice.ip)}
-        props.model.calculateTime();    //for stat tracking time on, needs to use current state of lamp before click
         props.model.togglePower();
+        props.model.calculateTime();
         props.model.logOnOffStat();
         const apiUrl = props.model.poweredOn ? 
             `http://${props.model.activeDevice.ip}:3000/start-demo?brightness=${props.model.brightness}` : 
@@ -23,7 +22,7 @@ export default function PowerOnPresenter(props) {
     function brightnessInputCustomEventHandlerACB(number) {
         props.model.setBrightness(number);
         if (props.model.poweredOn) { // Update brightness only if the matrix is powered on
-            const apiUrl = `http://172.20.10.8:3000/start-demo?brightness=${number}`;
+            const apiUrl = `http://${props.model.activeDevice.ip}:3000/start-demo?brightness=${number}`;
             axios.get(apiUrl)
                 .then(response => {
                     console.log('Server response:', response.data);
