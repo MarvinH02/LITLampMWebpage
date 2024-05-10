@@ -1,42 +1,32 @@
 import { CustomView } from "../views/CustomView";
-import axios from 'axios'
-
+import axios from 'axios';
 
 export default function CustomPresenter(props) {
-    function customCurrentTimeHandlerACB() {
-        const currentTime = new Date().toLocaleTimeString(); //spara tiden
-        console.log('Current Time:', currentTime); //console logga tiden.
-        const apiUrl =
-            `http://${props.model.activeDevice.ip}:3000/ //här ska det vara en endpoint som tar emot datumet`;
-
-        axios.get(apiUrl)
+    const customCurrentTimeHandlerACB = () => {
+        axios.get('http://172.20.10.11:3000/display-time')
             .then(response => {
-                console.log('Server response:', response.data);
+                console.log('Clock command executed successfully:', response.data);
             })
             .catch(error => {
-                console.error('Error calling the server:', error);
+                console.error('Failed to display time on the matrix:', error);
             });
-    }
-    function customCurrentDateHandlerACB() {
-        const currentDate = new Date().toLocaleDateString(); //spara datum
-        console.log('Current Date:', currentDate); //console logga datumet.
-        const apiUrl =
-            `http://${props.model.activeDevice.ip}:3000/ //här ska det vara en endpoint som tar emot datumet`;
+    };
 
-        axios.get(apiUrl)
+    const stopTimeDisplay = () => {
+        axios.get('http://172.20.10.11:3000/stop-time')
             .then(response => {
-                console.log('Server response:', response.data);
+                console.log('Clock display stopped successfully:', response.data);
             })
             .catch(error => {
-                console.error('Error calling the server:', error);
+                console.error('Failed to stop time display:', error);
             });
-    }
+    };
 
     return (
         <div>
             <CustomView
                 customTimeCustomEvent={customCurrentTimeHandlerACB}
-                customDateCustomEvent={customCurrentDateHandlerACB}
+                stopTimeEvent={stopTimeDisplay}
             />
         </div>
     );
