@@ -1,6 +1,5 @@
 import { CustomView } from "../views/CustomView";
-import axios from 'axios'
-
+import axios from 'axios';
 
 export default function CustomPresenter(props) {
     const customTimeCustomEventHandlerACB = () => {
@@ -14,7 +13,7 @@ export default function CustomPresenter(props) {
     };
 
     const stopTimeCustomEventHandlerACB = () => {
-        axios.get(`http://${props.model.activeDevice.ip}:3000/display-time`)
+        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-time`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
             })

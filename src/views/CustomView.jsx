@@ -1,4 +1,5 @@
 import '../style.css';
+
 function CustomView(props) {
     function clickedDisplayDateAndTimeCB() {
         props.customTimeCustomEvent();
