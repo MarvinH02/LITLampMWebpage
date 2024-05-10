@@ -21,6 +21,7 @@ export default function SnakePresenter (props) {
     function playingSnakeGameACB() {
         props.model.setGameStatus();
         props.model.logGamePlayed('snake');
+        props.model.StartPlayingSnake();
     }
 
     function hideScoreboardACB() {

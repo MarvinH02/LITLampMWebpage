@@ -432,4 +432,8 @@ export default {
         this.memoryScoreboard = scoreboard;
     },
 
+    StartPlayingSnake(){
+        //contact raspberry pi here
+    },
+
 };
