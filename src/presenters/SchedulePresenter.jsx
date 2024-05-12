@@ -18,6 +18,10 @@ export default function SchedulePresenter(props) {
         props.model.setScheduleMinutes(action)
     }
 
+    function secondsChangedACB(action){
+        props.model.setScheduleSeconds(action)
+    }
+
     function clickedCancelResetTimeACB(){
         props.model.resetTime()
     }
@@ -38,10 +42,12 @@ export default function SchedulePresenter(props) {
             hideSchedule = { hideScheduleACB }
             hours = { props.model.scheduleHours }
             minutes = { props.model.scheduleMinutes }
+            seconds = { props.model.scheduleSeconds }
             onOffState = { props.model.scheduleOnOffState }
             onOffStateChanged = { onOffStateChangedACB }
             hoursChanged = { hoursChangedACB }
             minutesChanged = { minutesChangedACB }
+            secondsChanged = { secondsChangedACB }
             resetTime = { clickedCancelResetTimeACB }
             saveCurrentTime = { saveScheduleACB }
             schedules = { props.model.schedules }

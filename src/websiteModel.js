@@ -11,6 +11,7 @@ export default {
     creatingSchedule: false,
     scheduleHours: 0,
     scheduleMinutes: 0,
+    scheduleSeconds: 0,
     schedules : [],
     scheduleOnOffState : true,
     addingDevice: false,
@@ -134,30 +135,72 @@ export default {
 
     setScheduleMinutes(action){
         if(action == ' + '){
-            if(this.scheduleMinutes == 55)
+            if(this.scheduleMinutes == 59)
                 this.scheduleMinutes = 0
             else
-                this.scheduleMinutes = this.scheduleMinutes + 5
+                this.scheduleMinutes = this.scheduleMinutes + 1
         }
         else if(action === ' - '){
             if(this.scheduleMinutes == 0)
-                this.scheduleMinutes = 55
+                this.scheduleMinutes = 59
             else
-                this.scheduleMinutes = this.scheduleMinutes - 5
+                this.scheduleMinutes = this.scheduleMinutes - 1
+        }
+    },
+    setScheduleSeconds(action){
+        if(action == ' + '){
+            if(this.scheduleSeconds == 59)
+                this.scheduleSeconds = 0
+            else
+                this.scheduleSeconds = this.scheduleSeconds + 1
+        }
+        else if(action === ' - '){
+            if(this.scheduleSeconds == 0)
+                this.scheduleSeconds = 59
+            else
+                this.scheduleSeconds = this.scheduleSeconds - 1
         }
     },
 
     resetTime(){
         this.scheduleHours = 0
         this.scheduleMinutes = 0
+        this.scheduleSeconds = 0
     },
 
     saveCurrentTimeToSchedules(state){
+        let convertedTime = 0;
+        let scheduleDate = new Date().toLocaleTimeString();     //current time at saving as string
+        let extractedHours = scheduleDate.slice(0, 2);
+        let extractedMinutes = scheduleDate.slice(3, 5);
+        let extractedSeconds = scheduleDate.slice(6, 8);
+        console.log(extractedHours);
+        console.log(extractedMinutes);
+        console.log(extractedSeconds);
+
+        if(this.scheduleHours > 0){
+            convertedTime = this.scheduleHours*60*60;
+            console.log(convertedTime);
+        }
+        if(this.scheduleMinutes > 0){
+            convertedTime = convertedTime + (this.scheduleMinutes*60);
+        }
+        if(this.scheduleSeconds > 0){
+            convertedTime = convertedTime + this.scheduleSeconds;
+        }
+        
+        
+        //creating new schedule, totaltimeinseconds to be passed to pi for countdown
         const newSchedule = {
             hours: this.scheduleHours,
             minutes: this.scheduleMinutes,
+            seconds: this.scheduleSeconds,
+            totalTimeInSeconds: convertedTime,
+            scheduleDate: scheduleDate,
             onTimeTurn: this.scheduleOnOffState,
           };
+        console.log(newSchedule.totalTimeInSeconds)
+        console.log(newSchedule.scheduleDate)
         if(this.schedules.length >= 5){
             //console.log("too many saved schedules")
         }

@@ -20,6 +20,10 @@ function ScheduleView (props) {
         props.minutesChanged(action.target.textContent)
     }
 
+    function secondsHandler(action){
+        props.secondsChanged(action.target.textContent)
+    }
+
     function onOffStateHandler(){
         props.onOffStateChanged()
     }
@@ -33,7 +37,7 @@ function ScheduleView (props) {
         return(
             <div className='schedule'>
                 {console.log(schedule.scheduleOnOffState)}
-                {schedule.hours >= 10 ? <p>{schedule.hours}</p> : <p>0{schedule.hours}</p>}:{schedule.minutes >= 10 ? <p>{schedule.minutes}</p> : <p>0{schedule.minutes}</p>} --on time turn:  {schedule.onTimeTurn ? <p>ON</p> : <p>OFF</p>}
+                {schedule.hours >= 10 ? <p>{schedule.hours}</p> : <p>0{schedule.hours}</p>}:{schedule.minutes >= 10 ? <p>{schedule.minutes}</p> : <p>0{schedule.minutes}</p>}:{schedule.seconds >= 10 ? <p>{schedule.seconds}</p> : <p>0{schedule.seconds}</p>}--on time turn:  {schedule.onTimeTurn ? <p>ON</p> : <p>OFF</p>}
             </div>
         )
     }
@@ -59,16 +63,16 @@ function ScheduleView (props) {
         return(
             <div>
                 <div className='center'>
-                    <h1>Creating Schedule</h1>
+                    <h1>Set Timer</h1>
                 </div>
                 <div className='center'>
-                <v-btn onClick={hoursHandler}> + </v-btn><v-btn onClick={minutesHandler}> + </v-btn>
+                <v-btn onClick={hoursHandler}> + </v-btn> <v-btn onClick={minutesHandler}> + </v-btn> <v-btn onClick={secondsHandler}> + </v-btn>
                 </div>
                 <div className='createScheduleDisplay'>
-                    {props.hours >= 10 ? <p>{props.hours}</p> : <p>0{props.hours}</p>}:{props.minutes >= 10 ? <p>{props.minutes}</p> : <p>0{props.minutes}</p>}
+                    {props.hours >= 10 ? <p>{props.hours}</p> : <p>0{props.hours}</p>}:{props.minutes >= 10 ? <p>{props.minutes}</p> : <p>0{props.minutes}</p>}:{props.seconds >= 10 ? <p>{props.seconds}</p> : <p>0{props.seconds}</p>}
                 </div>
                 <div className='center'>
-                <v-btn onClick={hoursHandler}> - </v-btn><v-btn onClick={minutesHandler}> - </v-btn>
+                <v-btn onClick={hoursHandler}> - </v-btn> <v-btn onClick={minutesHandler}> - </v-btn> <v-btn onClick={secondsHandler}> - </v-btn>
                 </div>
                 <div className='center'>
                     <v-btn onClick={cancelCreatingScheduleHandler}> Cancel </v-btn> <v-btn onClick={onOffStateHandler}> on time turn {props.onOffState ? <p>ON</p> : <p>OFF</p>}</v-btn> <v-btn disabled = {props.schedules.length >= 5} onClick={saveScheduleHandler}> Save </v-btn>
