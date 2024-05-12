@@ -33,10 +33,13 @@ function ScheduleView (props) {
         return(
             <div className='schedule'>
                 {console.log(schedule.scheduleOnOffState)}
-                {schedule.hours >= 10 ? <p>{schedule.hours}</p> : <p>0{schedule.hours}</p>}:{schedule.minutes >= 10 ? <p>{schedule.minutes}</p> : <p>0{schedule.minutes}</p>} {schedule.nextDay ? <p> -tomorrow, </p> : <p>--</p>} on time turn:  {schedule.onTimeTurn ? <p>ON</p> : <p>OFF</p>}
+                {schedule.hours >= 10 ? <p>{schedule.hours}</p> : <p>0{schedule.hours}</p>}:{schedule.minutes >= 10 ? <p>{schedule.minutes}</p> : <p>0{schedule.minutes}</p>} {schedule.nextDay ? <p> {schedule.scheduleDay == currentDay ? <p>_tomorrow_</p>: <p></p>} </p> : <p>_</p>} on time turn:  {schedule.onTimeTurn ? <p>ON</p> : <p>OFF</p>}
             </div>
         )
     }
+
+    let currentDay = parseInt((new Date().toLocaleDateString()).slice(0, 3));
+    console.log("current day:"+ currentDay)
 
     if(!props.creatingSchedule)     //view for seeing all your schedules
     return (

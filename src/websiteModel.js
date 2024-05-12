@@ -158,12 +158,14 @@ export default {
         let scheduleDate = new Date().toLocaleTimeString();     //current time at saving as string
         let extractedHours = scheduleDate.slice(0, 2);
         let extractedMinutes = scheduleDate.slice(3, 5);
+        let extractedDay = parseInt((new Date().toLocaleDateString()).slice(0, 3));
         let nextDay = false;
         console.log(extractedHours);
         console.log(extractedMinutes);
         extractedHours = parseInt(extractedHours);
         extractedMinutes = parseInt(extractedMinutes);
-
+        console.log(new Date())
+        console.log(extractedDay)
         if(this.scheduleMinutes > 0){
             let sum = this.scheduleMinutes + extractedMinutes;
             if(sum > 59){
@@ -191,6 +193,7 @@ export default {
             totalTimeInSeconds: convertedTime,      //here the converted time is saved as totalTimeInSeconds to be passed to pi later
             onTimeTurn: this.scheduleOnOffState,
             nextDay: nextDay,
+            scheduleDay: extractedDay,
           };
         console.log(newSchedule.totalTimeInSeconds)
         console.log(newSchedule.hours)
