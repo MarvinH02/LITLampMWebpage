@@ -33,7 +33,7 @@ function ScheduleView (props) {
         return(
             <div className='schedule'>
                 {console.log(schedule.scheduleOnOffState)}
-                {schedule.hours >= 10 ? <p>{schedule.hours}</p> : <p>0{schedule.hours}</p>}:{schedule.minutes >= 10 ? <p>{schedule.minutes}</p> : <p>0{schedule.minutes}</p>} {schedule.nextDay ? <p> {schedule.scheduleDay == currentDay ? <p>_tomorrow_</p>: <p></p>} </p> : <p>_</p>} on time turn:  {schedule.onTimeTurn ? <p>ON</p> : <p>OFF</p>}
+                {schedule.hours >= 10 ? <p>{schedule.hours}</p> : <p>0{schedule.hours}</p>}:{schedule.minutes >= 10 ? <p>{schedule.minutes}</p> : <p>0{schedule.minutes}</p>} {schedule.nextDay ? <p> {schedule.scheduleDay == currentDay ? <p>_tomorrow_</p>: <p></p>} </p> : <p>_</p>} on time turn:  {schedule.onTimeTurn ? <p>ON</p> : <p>OFF</p>} <v-btn>remove</v-btn>
             </div>
         )
     }
