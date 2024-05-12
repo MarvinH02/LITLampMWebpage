@@ -11,7 +11,6 @@ export default {
     creatingSchedule: false,
     scheduleHours: 0,
     scheduleMinutes: 0,
-    scheduleSeconds: 0,
     schedules : [],
     scheduleOnOffState : true,
     addingDevice: false,
@@ -147,20 +146,6 @@ export default {
                 this.scheduleMinutes = this.scheduleMinutes - 1
         }
     },
-    setScheduleSeconds(action){
-        if(action == ' + '){
-            if(this.scheduleSeconds == 59)
-                this.scheduleSeconds = 0
-            else
-                this.scheduleSeconds = this.scheduleSeconds + 1
-        }
-        else if(action === ' - '){
-            if(this.scheduleSeconds == 0)
-                this.scheduleSeconds = 59
-            else
-                this.scheduleSeconds = this.scheduleSeconds - 1
-        }
-    },
 
     resetTime(){
         this.scheduleHours = 0
@@ -173,34 +158,44 @@ export default {
         let scheduleDate = new Date().toLocaleTimeString();     //current time at saving as string
         let extractedHours = scheduleDate.slice(0, 2);
         let extractedMinutes = scheduleDate.slice(3, 5);
-        let extractedSeconds = scheduleDate.slice(6, 8);
+        let nextDay = false;
         console.log(extractedHours);
         console.log(extractedMinutes);
-        console.log(extractedSeconds);
+        extractedHours = parseInt(extractedHours);
+        extractedMinutes = parseInt(extractedMinutes);
 
+        if(this.scheduleMinutes > 0){
+            let sum = this.scheduleMinutes + extractedMinutes;
+            if(sum > 59){
+                sum = sum - 60;
+                extractedHours = extractedHours + 1;//extracted values are whats used for creating the schedule object which is supposed to calculate the time from when the schedule is set to the point in time in which the timer is set to perform an action (on or off)
+            }
+            extractedMinutes = sum;
+            convertedTime = convertedTime + (this.scheduleMinutes*60);  //converted time converts the hours/minutes/seconds in the model to a sum of seconds to pass to the pi daemon for counting down
+        }
         if(this.scheduleHours > 0){
-            convertedTime = this.scheduleHours*60*60;
+            let sum = this.scheduleHours + extractedHours;
+            if(sum > 23){
+                nextDay = true;
+                sum = sum - 24;
+            }
+            extractedHours = sum;
+            convertedTime = convertedTime + this.scheduleHours*60*60;
             console.log(convertedTime);
         }
-        if(this.scheduleMinutes > 0){
-            convertedTime = convertedTime + (this.scheduleMinutes*60);
-        }
-        if(this.scheduleSeconds > 0){
-            convertedTime = convertedTime + this.scheduleSeconds;
-        }
-        
-        
+
         //creating new schedule, totaltimeinseconds to be passed to pi for countdown
         const newSchedule = {
-            hours: this.scheduleHours,
-            minutes: this.scheduleMinutes,
-            seconds: this.scheduleSeconds,
-            totalTimeInSeconds: convertedTime,
-            scheduleDate: scheduleDate,
+            hours: extractedHours,
+            minutes: extractedMinutes,  //these values are to be used for display on the website
+            totalTimeInSeconds: convertedTime,      //here the converted time is saved as totalTimeInSeconds to be passed to pi later
             onTimeTurn: this.scheduleOnOffState,
+            nextDay: nextDay,
           };
         console.log(newSchedule.totalTimeInSeconds)
-        console.log(newSchedule.scheduleDate)
+        console.log(newSchedule.hours)
+        console.log(newSchedule.minutes)
+        console.log(newSchedule.nextDay)
         if(this.schedules.length >= 5){
             //console.log("too many saved schedules")
         }
