@@ -479,6 +479,7 @@ export default {
 
     clearSchedules(){
         this.schedules = []
+        //add code to contact pi here tell daemon to stop
     },
 
 };
