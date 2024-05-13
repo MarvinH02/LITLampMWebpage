@@ -30,6 +30,10 @@ export default function SchedulePresenter(props) {
         props.model.setOnOffState()
     }
 
+    function clearSchedulesACB(){
+        props.model.clearSchedules()
+    }
+
     return (
         <div>
             <ScheduleView
@@ -45,6 +49,7 @@ export default function SchedulePresenter(props) {
             resetTime = { clickedCancelResetTimeACB }
             saveCurrentTime = { saveScheduleACB }
             schedules = { props.model.schedules }
+            clearAllSchedules = { clearSchedulesACB }
             />
         </div>
   );

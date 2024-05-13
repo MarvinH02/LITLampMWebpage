@@ -477,4 +477,8 @@ export default {
         //contact raspberry pi here
     },
 
+    clearSchedules(){
+        this.schedules = []
+    },
+
 };
