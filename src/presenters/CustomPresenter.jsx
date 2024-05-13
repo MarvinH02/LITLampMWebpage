@@ -22,11 +22,31 @@ export default function CustomPresenter(props) {
             });
     };
 
+    const displayWeatherCustomEventHandlerACB = () => {
+        axios.get(`http://${props.model.activeDevice.ip}:3000/display-weather`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    };
+    const stopWeatherCustomEventHanderACB = () => {
+        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-weather`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    };
     return (
         <div>
             <CustomView
                 customTimeCustomEvent={customTimeCustomEventHandlerACB}
                 stopTimeCustomEvent={stopTimeCustomEventHandlerACB}
+                displayWeatherCustomEvent={displayWeatherCustomEventHandlerACB}
+                stopWeatherCustomEvent={stopWeatherCustomEventHanderACB}
             />
         </div>
     );
