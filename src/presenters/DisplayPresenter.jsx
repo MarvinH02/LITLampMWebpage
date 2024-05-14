@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import DisplayView from '../views/DisplayView.jsx';
 
 function DisplayPresenter(props) {
@@ -18,6 +19,7 @@ function DisplayPresenter(props) {
                 .catch(error => console.error('Error uploading image:', error));
         }
     };
+    
 
     // Function to request the server to display an image on the LED matrix
     function displayMatrix(imagePath) {
@@ -44,11 +46,33 @@ function DisplayPresenter(props) {
         props.model.deleteImage(image);
     }
     function displayPersonalImageCustomEventHandlerACB(image) {
-        //skriv kod för att visa personal bild på led-matrix, image är en bas 64 binär string
+     
     }
-    function displayImageOrGifCustomEventHandlerACB(image) {
-        //skriv kod för att visa bild eller gif på led-matrix, image är path till bild eller gif
+    function displayImageOrGifCustomEventHandlerACB(imagePath) {
+        // Extract just the filename
+        const imageName = imagePath.split('/').pop();
+    
+        // Check if props and model or activeDevice is defined
+        const deviceIP = props && props.model && props.model.activeDevice && props.model.activeDevice.ip;
+        if (!deviceIP) {
+            console.error('Device IP is not defined');
+            return;
+        }
+    
+        const apiUrl = `http://${deviceIP}:3000/image-stock?image=${imageName}`;
+    
+        axios.get(apiUrl)
+            .then(response => {
+                console.log('Server response:', response.data);
+            })
+            .catch(error => {
+                console.error('Error calling the server:', error);
+            });
+
+            console.log(imageName); // the output is /src/share/rgbmatrix/images/Alien.gif
+
     }
+    
 
     return (
         <DisplayView
