@@ -40,6 +40,24 @@ export default function CustomPresenter(props) {
                 console.error('Failed to stop time display:', error);
             });
     };
+    const displayTemperatureCustomEventHandlerACB = () => {
+        axios.get(`http://${props.model.activeDevice.ip}:3000/display-temperature`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    };
+    const stopTempeatureCustomEventHandlerACB = () => {
+        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-temperature`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    };
     return (
         <div>
             <CustomView
@@ -47,6 +65,8 @@ export default function CustomPresenter(props) {
                 stopTimeCustomEvent={stopTimeCustomEventHandlerACB}
                 displayWeatherCustomEvent={displayWeatherCustomEventHandlerACB}
                 stopWeatherCustomEvent={stopWeatherCustomEventHanderACB}
+                displayTemperatureCustomEvent={displayTemperatureCustomEventHandlerACB}
+                stopTemperatureCustomEvent={stopTempeatureCustomEventHandlerACB}
             />
         </div>
     );
