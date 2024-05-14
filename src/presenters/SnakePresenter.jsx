@@ -1,17 +1,22 @@
 import { SnakeView } from "../views/SnakeView";
 
 export default function SnakePresenter (props) {
-    function arrowUpCustomEventHandlerACB(){
-        
+
+    function arrowUpACB(){
+        //console.log('triggered arrow up custom event')
+        props.model.sendControlCommand('w');
     }
-    function arrowDownCustomEventHandlerACB(){
-        
+    function arrowDownACB(){
+        //console.log('triggered arrow down custom event')
+        props.model.sendControlCommand('s')
     }
-    function arrowLeftCustomEventHandlerACB(){
-        
+    function arrowLeftACB(){
+        //console.log('triggered arrow left custom event')
+        props.model.sendControlCommand('a')
     }
-    function arrowRightCustomEventHandlerACB(){
-        
+    function arrowRightACB(){
+        //console.log('triggered arrow right custom event')
+        props.model.sendControlCommand('d')
     }
 
     function showScoreboardACB(){
@@ -35,10 +40,10 @@ export default function SnakePresenter (props) {
     return (
         <div>
             <SnakeView
-            arrowUpCustomEvent={arrowUpCustomEventHandlerACB}
-            arrowDownCustomEvent={arrowDownCustomEventHandlerACB}
-            arrowLeftCustomEvent={arrowLeftCustomEventHandlerACB}
-            arrowRightCustomEvent={arrowRightCustomEventHandlerACB}
+            arrowUpCustomEvent={arrowUpACB}
+            arrowDownCustomEvent={arrowDownACB}
+            arrowLeftCustomEvent={arrowLeftACB}
+            arrowRightCustomEvent={arrowRightACB}
             playingGame={playingSnakeGameACB}
             gameStatus={props.model.gameStatus}
             showScoreboard = { props.model.showScoreboard }

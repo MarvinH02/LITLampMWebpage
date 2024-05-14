@@ -482,4 +482,20 @@ export default {
         //add code to contact pi here tell daemon to stop
     },
 
+    sendControlCommand(command) {
+        //console.log('active device ip: ' + this.activeDevice.ip)
+        fetch(`http://${this.activeDevice.ip}:3000/control-snake`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ command })
+        })
+        .then(response => response.text())
+        .then(data => {
+            console.log(`Server response: ${data}`);  
+        })
+        .catch(error => console.error('Error sending control command:', error));
+    },
+
 };

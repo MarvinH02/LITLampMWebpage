@@ -9,6 +9,27 @@ function SnakeView (props){
             position = 0;
     }
 
+    function keyPressedEventHandler(event){
+        switch(event.keyCode){
+            case 87: 
+                props.arrowUpCustomEvent();
+                break;
+            case 83:
+                props.arrowDownCustomEvent();
+                break;
+            case 65:
+                props.arrowLeftCustomEvent();
+                break;
+            case 68:
+                props.arrowRightCustomEvent();
+                break;
+            default:
+                console.log("key pressed not valid")
+                break;
+        }
+        console.log(event.keyCode)
+    }
+
     function clickedUpButton(){
         props.arrowUpCustomEvent();
     }
@@ -71,7 +92,7 @@ function SnakeView (props){
     }
     else{
         return(     //controls
-            <div class="snakeView">
+            <div onkeydown = { keyPressedEventHandler } class="snakeView">
                 <v-btn color='#678A35'onClick={startSnakeHandler} size='x-large'>
                 STOP
                 </v-btn>
