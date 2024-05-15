@@ -19,6 +19,9 @@ function CustomView(props) {
     function clickedStopTemperatureCB(){
         props.stopTemperatureCustomEvent();
     }
+    function clickedMeasureTemperatureHandler(){
+        props.startMeasuringTemperature();
+    }
     return (
         <div class="centerCustom">
             <v-btn variant="tonal" class="customButton" onClick={clickedDisplayDateAndTimeCB}
@@ -45,7 +48,13 @@ function CustomView(props) {
             >
                         <h2>Close Weather</h2>
             </v-btn>
-            <v-btn variant="tonal" class="customButton" onClick={clickedDisplayTemperatureCB}
+            <v-btn variant="tonal" class="customButton" onClick={clickedStopTemperatureCB}
+            width="250"
+            height="100"
+            >
+                        <h2>Measure Room temp</h2>
+            </v-btn>
+            <v-btn variant="tonal" class="customButton" onClick={clickedMeasureTemperatureHandler}
             width="250"
             height="100"
             >

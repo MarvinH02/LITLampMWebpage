@@ -50,6 +50,16 @@ export default function CustomPresenter(props) {
             });
     };
 
+    const startMeasuringTemperatureACB = () => {
+        axios.get(`http://${props.model.activeDevice.ip}:3000/measure-room-temperature`)
+            .then(response => {
+                console.log('Started measuring temperature:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to start measuring temperature:', error);
+            });
+    };
+
 
 
     const stopTempeatureCustomEventHandlerACB = () => {
@@ -70,6 +80,7 @@ export default function CustomPresenter(props) {
                 stopWeatherCustomEvent={stopWeatherCustomEventHanderACB}
                 displayTemperatureCustomEvent={displayTemperatureCustomEventHandlerACB}
                 stopTemperatureCustomEvent={stopTempeatureCustomEventHandlerACB}
+                startMeasuringTemperature = { startMeasuringTemperatureACB }
             />
         </div>
     );
