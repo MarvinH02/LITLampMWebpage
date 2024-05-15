@@ -41,7 +41,7 @@ export default function CustomPresenter(props) {
             });
     };
     const displayTemperatureCustomEventHandlerACB = () => {
-        axios.get(`http://${props.model.activeDevice.ip}:3000/display-temperature`)
+        axios.get(`http://${props.model.activeDevice.ip}:3000/display-room-temperature`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
             })
@@ -49,8 +49,11 @@ export default function CustomPresenter(props) {
                 console.error('Failed to stop time display:', error);
             });
     };
+
+
+
     const stopTempeatureCustomEventHandlerACB = () => {
-        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-temperature`)
+        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-room-temperature`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
             })
