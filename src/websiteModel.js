@@ -1,5 +1,5 @@
 import { set } from "firebase/database";
-
+import axios from 'axios';
 
 export default {
     user: null,
@@ -499,6 +499,68 @@ export default {
         })
         .catch(error => console.error('Error sending control command:', error));
     },
+    
+    // Matrix turn off functions below =========================
+    turnOnOrOffDemo() {
+        const apiUrl = this.poweredOn ? 
+            `http://${this.activeDevice.ip}:3000/start-demo?brightness=${this.brightness}` : 
+            `http://${this.activeDevice.ip}:3000/stop-demo`;
+
+        axios.get(apiUrl)
+            .then(response => {
+                console.log('Server response:', response.data);
+            })
+            .catch(error => {
+                console.error('Error calling the server:', error);
+            });
+    }, 
+
+    turnOffTemperature(){
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-room-temperature`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    },
+
+    turnOffClock(){
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-time`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    },
+    turnOffWeather(){
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-weather`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+    },
+    turnOffColor(){
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-color`)
+            .then(response => {
+                console.log('Color display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop color display:', error);
+            });
+    },
+    turnOffAll(){
+        this.turnOffColor();
+        this.turnOffClock();
+        this.turnOffTemperature();
+        this.turnOffTime();
+        this.turnOffWeather();
+    },
+
+    // End of turn off functions ======================================
 
     addToUserImages(image){
         this.userImages = [...this.userImages, image];

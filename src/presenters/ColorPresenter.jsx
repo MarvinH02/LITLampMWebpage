@@ -17,14 +17,8 @@ export default function ColorPresenter (props) {
                 console.error('Error calling the server:', error);
             });
     }
-    const stopColorCustomEventHandlerACB = () => {
-        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-color`)
-            .then(response => {
-                console.log('Color display stopped successfully:', response.data);
-            })
-            .catch(error => {
-                console.error('Failed to stop color display:', error);
-            });
+    function stopColorCustomEventHandlerACB() {
+        props.model.turnOffColor();
     };
     return (
         <div>

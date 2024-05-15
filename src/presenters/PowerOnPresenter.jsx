@@ -6,17 +6,7 @@ export default function PowerOnPresenter(props) {
         props.model.togglePower();
         props.model.calculateTime();
         props.model.logOnOffStat();
-        const apiUrl = props.model.poweredOn ? 
-            `http://${props.model.activeDevice.ip}:3000/start-demo?brightness=${props.model.brightness}` : 
-            `http://${props.model.activeDevice.ip}:3000/stop-demo`;
-
-        axios.get(apiUrl)
-            .then(response => {
-                console.log('Server response:', response.data);
-            })
-            .catch(error => {
-                console.error('Error calling the server:', error);
-            });
+        props.model.turnOffAll(); //pkill everything
     }
 
     function brightnessInputCustomEventHandlerACB(number) {
