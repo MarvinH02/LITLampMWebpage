@@ -20,23 +20,6 @@ function GameSelectView (props) {
                     width= '50px'
                     min-width='250px'
                     height='50vh'
-                    image='src/images/tic.png'
-                    >
-                    <v-card-text style="margin-top:100%; text-align: center; font-size:x-large; font-family:fantasy">
-                        <h3>Tic-Tac-Toe</h3>
-                    </v-card-text>
-                    </v-card>
-                    
-                </div>
-                <div>
-                    <v-card 
-                    text="" 
-                    variant="elevated"
-                    hover
-                    link
-                    width= '50px'
-                    min-width='250px'
-                    height='50vh'
                     image='src/images/snake.png'
                     onClick={goToSnakeGameHandler}
                     >
