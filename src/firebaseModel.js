@@ -35,6 +35,7 @@ function modelToPersistence(model) {
         favouriteGameIcon : model.favouriteGameIcon,
         turnOnTime : model.turnOnTime,
         schedules : model.schedules,
+        userImages: model.userImages,
     };
 }
 function modelToPersistenceGlobal(model) {
@@ -67,6 +68,7 @@ function persistenceToModelUserData(data, model) {
         model.setCurrentPage(null)
         model.setCurrentDevice(null)
         model.setDevices([])
+        model.setUserImages([])
         return;
     }
     if (data.currentPage) {
@@ -146,7 +148,13 @@ function persistenceToModelUserData(data, model) {
     }
     else{
         model.schedules = []
+    }if (data.userImages) {
+        model.setUserImages(data.userImages)
     }
+    else{
+        model.setUserImages([])
+    }
+
 }
 
 function saveToFirebase(model){
@@ -209,7 +217,7 @@ function connectToFirebase(model, watchFunction){
         return [model.activeDevice, model.devices, model.currentPage, 
             model.onOffStat, model.turnOnTime, model.poweredOn, model.totalTimeOn, 
             model.ticTacToeGamesPlayed, model.snakeGamesPlayed, model.memoryGamesPlayed, model.favouriteGame, model.favouriteGameIcon,
-            model.schedules];
+            model.schedules, model.userImages];
     }
     function checkGlobalACB(){
         //console.log("checking Global ACB");

@@ -305,3 +305,41 @@
 .customButton{
     cursor: pointer;
 }
+
+.images{
+    padding: 10px;
+}
+
+.Gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns for larger screens */
+    gap: 20px;
+    padding: 20px;
+    align-items: start; /* Align items to start to handle cards of variable content gracefully */
+    margin: auto;
+    max-width: 1200px; /* Optimal width for readability and layout */
+    background: #f0f0f0; /* Neutral background that complements images */
+}
+
+.upload-area {
+    display: flex;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    background-color: #fafafa;
+    cursor: pointer;
+    width: 30%;
+    height: 20%;
+}
+
+
+.drag-drop-box {
+    text-align: center;
+    width: 80%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.upload-content {
+    margin-bottom: 20px;
+}
+

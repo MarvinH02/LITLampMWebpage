@@ -31,6 +31,8 @@ export default {
     snakeScoreboard: [{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0}],
     memoryScoreboard: [{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0},{name: 'goober', score: 0}],
     showScoreboard: false,
+    userImages: [],
+
 
 
 
@@ -496,6 +498,19 @@ export default {
             console.log(`Server response: ${data}`);  
         })
         .catch(error => console.error('Error sending control command:', error));
+    },
+
+    addToUserImages(image){
+        this.userImages = [...this.userImages, image];
+    },
+    setUserImages(images){
+        this.userImages = images;
+    },
+    deleteImage(image){
+        function shouldImageBeDeleted(imageToCheck){
+            return imageToCheck !== image;
+        }
+        this.userImages = this.userImages.filter(shouldImageBeDeleted);
     },
 
 };
