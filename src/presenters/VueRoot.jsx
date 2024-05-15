@@ -12,6 +12,7 @@ import SnakePresenter from './SnakePresenter.jsx';
 import CustomPresenter from './CustomPresenter.jsx';
 import MemoryGamePresenter from './MemoryGamePresenter.jsx';
 import StatsPresenter from './StatsPresenter.jsx';
+import DisplayPresenter from './DisplayPresenter.jsx'
 import {createRouter, createWebHashHistory} from "vue-router";
 import '../style.css';
 
@@ -66,6 +67,10 @@ export function makeRouter(model) {
             {
                 path: "/statistics",
                 component: <StatsPresenter model={model} />,
+            },
+            {
+                path: "/display",
+                component: <DisplayPresenter model={model} />,
             },
 
 
