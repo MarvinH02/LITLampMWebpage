@@ -1,6 +1,6 @@
 import '../style.css';
 function ColorView (props){
-    var color = '#000000';
+    var color = '#0000ff';
     function colorChangedCB(newColor){
         color = newColor;
     }

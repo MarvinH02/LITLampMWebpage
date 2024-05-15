@@ -48,13 +48,13 @@ function CustomView(props) {
             >
                         <h2>Close Weather</h2>
             </v-btn>
-            <v-btn variant="tonal" class="customButton" onClick={clickedStopTemperatureCB}
+            <v-btn variant="tonal" class="customButton" onClick={clickedMeasureTemperatureHandler}
             width="250"
             height="100"
             >
                         <h2>Measure Room temp</h2>
             </v-btn>
-            <v-btn variant="tonal" class="customButton" onClick={clickedMeasureTemperatureHandler}
+            <v-btn variant="tonal" class="customButton" onClick={clickedDisplayTemperatureCB}
             width="250"
             height="100"
             >

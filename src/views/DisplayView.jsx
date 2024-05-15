@@ -151,15 +151,18 @@ function DisplayView (props) {
         }
     }
 
-   
+   function stopShowingImage(){
+        props.clearImageOrGifCustomEvent();
+   }
 
     
     return (
         <div>
             <h1 class="center">Gallery</h1>
+            <v-btn variant="tonal" onClick={stopShowingImage}>Stop displaying image</v-btn>
             <div className='Gallery'>
             <div>
-                <h2>Personal Images</h2>
+                <h2>Personal Images</h2> 
                 {showImagesList()}
                 {props.userImages.length === 0 && <p>No images uploaded yet</p>}
                 

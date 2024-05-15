@@ -476,7 +476,24 @@ export default {
     },
 
     StartPlayingSnake(){
-        //contact raspberry pi here
+        if(!this.gameStatus){
+            axios.get(`http://${this.activeDevice.ip}:3000/start-snake`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+        }
+        else{
+            axios.get(`http://${this.activeDevice.ip}:3000/stop-snake`)
+            .then(response => {
+                console.log('Clock display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop time display:', error);
+            });
+        }
     },
 
     clearSchedules(){
@@ -501,12 +518,12 @@ export default {
     },
     
     // Matrix turn off functions below =========================
-    turnOnOrOffDemo() {
-        const apiUrl = this.poweredOn ? 
-            `http://${this.activeDevice.ip}:3000/start-demo?brightness=${this.brightness}` : 
-            `http://${this.activeDevice.ip}:3000/stop-demo`;
+    turnOffDemo() {
+        //const apiUrl = this.poweredOn ? 
+        //    `http://${this.activeDevice.ip}:3000/start-demo?brightness=${this.brightness}` : 
+        //    `http://${this.activeDevice.ip}:3000/stop-demo`;
 
-        axios.get(apiUrl)
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-demo`)
             .then(response => {
                 console.log('Server response:', response.data);
             })
@@ -552,12 +569,22 @@ export default {
                 console.error('Failed to stop color display:', error);
             });
     },
+    turnOffStockImage(){
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-stock-image`)
+            .then(response => {
+                console.log('Color display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop color display:', error);
+            });
+    },
     turnOffAll(){
+        this.turnOffDemo();
         this.turnOffColor();
         this.turnOffClock();
         this.turnOffTemperature();
-        this.turnOffTime();
         this.turnOffWeather();
+        this.turnOffStockImage();
     },
 
     // End of turn off functions ======================================

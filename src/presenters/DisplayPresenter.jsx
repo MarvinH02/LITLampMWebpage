@@ -58,10 +58,9 @@ export default function DisplayPresenter (props){
             console.error('Device IP is not defined');
             return;
         }
+        props.model.setPowerState(true);
     
-        const apiUrl = `http://${deviceIP}:3000/image-stock?image=${imageName}`;
-    
-        axios.get(apiUrl)
+        axios.get(`http://${props.model.activeDevice.ip}:3000/image-stock?image=${imageName}`)
             .then(response => {
                 console.log('Server response:', response.data);
             })
@@ -71,6 +70,9 @@ export default function DisplayPresenter (props){
 
             console.log(imageName); // the output is /src/share/rgbmatrix/images/Alien.gif
 
+    }
+    function clearImageOrGifCustomEventHandlerACB(){
+        props.model.turnOffStockImage();
     }
 
     return(
@@ -86,6 +88,7 @@ export default function DisplayPresenter (props){
                 deleteImageCustomEvent={deleteImageCustomEventHandlerACB}
                 displayPersonalImageCustomEvent={displayPersonalImageCustomEventHandlerACB}
                 displayImageOrGifCustomEvent={displayImageOrGifCustomEventHandlerACB}
+                clearImageOrGifCustomEvent={clearImageOrGifCustomEventHandlerACB}
         
             />
         </div>

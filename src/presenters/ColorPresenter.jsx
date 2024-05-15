@@ -6,6 +6,7 @@ export default function ColorPresenter (props) {
         console.log("color before: "+props.model.color);
         props.model.setColor(color);
         console.log("color after: "+props.model.color);
+        props.model.setPowerState(true);
         const apiUrl = 
             `http://${props.model.activeDevice.ip}:3000/display-color?color=${props.model.color.replace("#", "")}`;
 

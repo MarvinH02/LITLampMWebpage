@@ -3,10 +3,25 @@ import { PowerOnView } from '../views/PowerOnView.jsx';
 
 export default function PowerOnPresenter(props) {
     function togglePowerCustomEventHandlerACB() {
-        props.model.togglePower();
         props.model.calculateTime();
         props.model.logOnOffStat();
-        props.model.turnOffAll(); //pkill everything
+        if (props.model.poweredOn){
+            props.model.setPowerState(false);
+            props.model.turnOffAll(); //pkill everything
+        }
+        else{
+            props.model.setPowerState(true);
+            const apiUrl = 
+            `http://${props.model.activeDevice.ip}:3000/start-demo?brightness=${props.model.brightness}`;
+
+            axios.get(apiUrl)
+                .then(response => {
+                    console.log('Server response:', response.data);
+                })
+                .catch(error => {
+                    console.error('Error calling the server:', error);
+                });
+        }
     }
 
     function brightnessInputCustomEventHandlerACB(number) {

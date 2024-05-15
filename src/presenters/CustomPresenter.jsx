@@ -3,6 +3,7 @@ import axios from 'axios';
 
 export default function CustomPresenter(props) {
     const customTimeCustomEventHandlerACB = () => {
+        props.model.setPowerState(true);
         axios.get(`http://${props.model.activeDevice.ip}:3000/display-time`)
             .then(response => {
                 console.log('Clock command executed successfully:', response.data);
@@ -13,10 +14,12 @@ export default function CustomPresenter(props) {
     };
 
     function stopTimeCustomEventHandlerACB () {
+        props.model.setPowerState(false);
         props.model.turnOffClock();
     };
 
     const displayWeatherCustomEventHandlerACB = () => {
+        props.model.setPowerState(true);
         axios.get(`http://${props.model.activeDevice.ip}:3000/display-weather`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
@@ -26,9 +29,11 @@ export default function CustomPresenter(props) {
             });
     };
     function stopWeatherCustomEventHanderACB (){
+        props.model.setPowerState(false);
         props.model.turnOffWeather();
     };
     const displayTemperatureCustomEventHandlerACB = () => {
+        props.model.setPowerState(true);
         axios.get(`http://${props.model.activeDevice.ip}:3000/display-room-temperature`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
@@ -51,6 +56,7 @@ export default function CustomPresenter(props) {
 
 
     function stopTempeatureCustomEventHandlerACB () {
+        props.model.setPowerState(false);
         props.model.turnOffTemperature();
     };
     return (
