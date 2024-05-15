@@ -3,27 +3,12 @@ import axios from 'axios';
 
 export default function CustomPresenter(props) {
     const customTimeCustomEventHandlerACB = () => {
-        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-weather`)
-            .then(response => {
-                console.log('Clock display stopped successfully:', response.data);
-            })
-            .catch(error => {
-                console.error('Failed to stop time display:', error);
-            });
-        axios.get(`http://${props.model.activeDevice.ip}:3000/stop-room-temperature`)
-        .then(response => {
-            console.log('Clock display stopped successfully:', response.data);
-        })
-        .catch(error => {
-            console.error('Failed to stop time display:', error);
-        });
-
         axios.get(`http://${props.model.activeDevice.ip}:3000/display-time`)
             .then(response => {
-                console.log('Displaying time: ', response.data);
+                console.log('Clock command executed successfully:', response.data);
             })
             .catch(error => {
-                console.error('Failed to display time:', error);
+                console.error('Failed to display time on the matrix:', error);
             });
     };
 
