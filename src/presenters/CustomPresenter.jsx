@@ -32,27 +32,26 @@ export default function CustomPresenter(props) {
         props.model.setPowerState(false);
         props.model.turnOffWeather();
     };
-    const displayTemperatureCustomEventHandlerACB = () => {
+    function displayTemperatureCustomEventHandlerACB() {
         props.model.setPowerState(true);
-        axios.get(`http://${props.model.activeDevice.ip}:3000/display-room-temperature`)
+        axios.get(`http://${props.model.activeDevice.ip}:3000/measure-room-temperature`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
             })
             .catch(error => {
                 console.error('Failed to stop time display:', error);
             });
+        setTimeout(() => {
+            axios.get(`http://${props.model.activeDevice.ip}:3000/display-room-temperature`)
+                .then(response => {
+                    console.log('Started measuring temperature:', response.data);
+                })
+                .catch(error => {
+                    console.error('Failed to start measuring temperature:', error);
+                });
+        }, 2000)
+        
     };
-
-    const startMeasuringTemperatureACB = () => {
-        axios.get(`http://${props.model.activeDevice.ip}:3000/measure-room-temperature`)
-            .then(response => {
-                console.log('Started measuring temperature:', response.data);
-            })
-            .catch(error => {
-                console.error('Failed to start measuring temperature:', error);
-            });
-    };
-
 
 
     function stopTempeatureCustomEventHandlerACB () {
@@ -68,7 +67,6 @@ export default function CustomPresenter(props) {
                 stopWeatherCustomEvent={stopWeatherCustomEventHanderACB}
                 displayTemperatureCustomEvent={displayTemperatureCustomEventHandlerACB}
                 stopTemperatureCustomEvent={stopTempeatureCustomEventHandlerACB}
-                startMeasuringTemperature = { startMeasuringTemperatureACB }
             />
         </div>
     );

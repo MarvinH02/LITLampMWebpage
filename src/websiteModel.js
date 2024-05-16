@@ -175,7 +175,7 @@ export default {
                 extractedHours = extractedHours + 1;//extracted values are whats used for creating the schedule object which is supposed to calculate the time from when the schedule is set to the point in time in which the timer is set to perform an action (on or off)
             }
             extractedMinutes = sum;
-            convertedTime = convertedTime + (this.scheduleMinutes*60);  //converted time converts the hours/minutes/seconds in the model to a sum of seconds to pass to the pi daemon for counting down
+            convertedTime = convertedTime + (this.scheduleMinutes);  //converted time converts the hours/minutes/seconds in the model to a sum of seconds to pass to the pi daemon for counting down
         }
         if(this.scheduleHours > 0){
             let sum = this.scheduleHours + extractedHours;
@@ -184,7 +184,7 @@ export default {
                 sum = sum - 24;
             }
             extractedHours = sum;
-            convertedTime = convertedTime + this.scheduleHours*60*60;
+            convertedTime = convertedTime + this.scheduleHours*60;
             console.log(convertedTime);
         }
 
@@ -204,8 +204,17 @@ export default {
         if(this.schedules.length >= 5){
             //console.log("too many saved schedules")
         }
-        else
-        this.schedules = [...this.schedules, newSchedule]
+        else{
+            console.log("timer is gonna start trust with timer of: "+ newSchedule.totalTimeInSeconds)
+            this.schedules = [...this.schedules, newSchedule]
+            axios.get(`http://${this.activeDevice.ip}:3000/start-timer?time=${newSchedule.totalTimeInSeconds}`)
+            .then(response => {
+                console.log('Timer started successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to start timer:', error);
+            });
+        }
         //console.log(this.schedules)
     },
 
