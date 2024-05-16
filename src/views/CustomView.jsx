@@ -1,6 +1,13 @@
 import '../style.css';
 
 function CustomView(props) {
+
+    function handleCityNameSubmit() {
+        const cityNameInput = document.getElementById('cityNameInput');
+        const cityName = cityNameInput.value;
+        props.onCityNameSubmit(cityName);
+    }
+
     function clickedDisplayDateAndTimeCB() {
         props.customTimeCustomEvent();
     }
@@ -19,25 +26,32 @@ function CustomView(props) {
     function clickedStopTemperatureCB(){
         props.stopTemperatureCustomEvent();
     }
+
     return (
         <div class="centerCustom">
-            <v-btn variant="tonal" class="customButton" onClick={clickedDisplayDateAndTimeCB}
-            width="250"
-            height="100"
-            >
-                        <h2>Display Date & Time</h2>
-            </v-btn>
+            <input
+                type="text"
+                id="cityNameInput"
+                placeholder="Enter city name"
+            />
+            <button onClick={handleCityNameSubmit}>Submit City Name for weather information</button>
             <v-btn variant="tonal" class="customButton" onClick={clickedDisplayWeatherCB}
-            width="250"
-            height="100"
+                width="250"
+                height="100"
             >
-                        <h2>Display Weather</h2>
+                <h2>Display Weather</h2>
+            </v-btn>
+            <v-btn variant="tonal" class="customButton" onClick={clickedDisplayDateAndTimeCB}
+                width="250"
+                height="100"
+            >
+                <h2>Display Date & Time</h2>
             </v-btn>
             <v-btn variant="tonal" class="customButton" onClick={clickedDisplayTemperatureCB}
-            width="250"
-            height="100"
+                width="250"
+                height="100"
             >
-                        <h2>Display Room temp</h2>
+                <h2>Display Room temp</h2>
             </v-btn>
         </div>
     );

@@ -159,7 +159,6 @@ function DisplayView (props) {
     return (
         <div>
             <h1 class="center">Gallery</h1>
-            <v-btn variant="tonal" onClick={stopShowingImage}>Stop displaying image</v-btn>
             <div className='Gallery'>
             <div>
                 <h2>Personal Images</h2> 
