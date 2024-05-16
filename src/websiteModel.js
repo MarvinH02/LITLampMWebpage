@@ -477,6 +477,7 @@ export default {
 
     StartPlayingSnake(){
         if(!this.gameStatus){
+            this.setGameStatusBoolean(true);
             axios.get(`http://${this.activeDevice.ip}:3000/start-snake`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
@@ -486,6 +487,7 @@ export default {
             });
         }
         else{
+            this.setGameStatusBoolean(false);
             axios.get(`http://${this.activeDevice.ip}:3000/stop-snake`)
             .then(response => {
                 console.log('Clock display stopped successfully:', response.data);
@@ -600,6 +602,9 @@ export default {
             return imageToCheck !== image;
         }
         this.userImages = this.userImages.filter(shouldImageBeDeleted);
+    },
+    setGameStatusBoolean(bool){
+        this.gameStatus = bool;
     },
 
 };
