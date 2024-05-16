@@ -580,6 +580,7 @@ export default {
                 console.error('Failed to stop color display:', error);
             });
     },
+    /*
     turnOffAll(){
         this.turnOffDemo();
         this.turnOffColor();
@@ -587,6 +588,16 @@ export default {
         this.turnOffTemperature();
         this.turnOffWeather();
         this.turnOffStockImage();
+    },
+    */
+    turnOffAll(){
+        axios.get(`http://${this.activeDevice.ip}:3000/stop-all-displays`)
+            .then(response => {
+                console.log('Color display stopped successfully:', response.data);
+            })
+            .catch(error => {
+                console.error('Failed to stop color display:', error);
+            });
     },
 
     // End of turn off functions ======================================
