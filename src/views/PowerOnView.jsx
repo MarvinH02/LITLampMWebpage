@@ -1,7 +1,7 @@
 
 function PowerOnView (props) {
     const buttonColor = {
-        backgroundColor: props.power ? 'green' : 'red'
+        backgroundColor: props.power ? 'red' : 'green'
     };
     function clickedPowerButton(){
         props.togglePowerCustomEvent();
