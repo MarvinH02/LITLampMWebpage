@@ -21,7 +21,6 @@ function ColorView (props){
             </div>
             <div class="colorButton">
                 <v-btn size="x-large" variant="tonal" onClick={updateColorCB}>Update color</v-btn>
-                <v-btn size="x-large" variant="tonal" onClick={stopColorCB}>Stop displaying color</v-btn>
 
             </div>
         </div>

@@ -58,7 +58,7 @@ function HeaderView (props) {
                         <span class="material-symbols-outlined">
                         power_settings_new
                         </span>
-                        ON/OFF & Brightness
+                        ON/OFF
                     </v-btn>
                     <v-btn variant="tonal" class="iconButtons" onClick={ClickedColorPageHandler}>
                         <span class="material-symbols-outlined">
@@ -89,12 +89,6 @@ function HeaderView (props) {
                         view_compact
                         </span>
                         Custom
-                    </v-btn>
-                    <v-btn variant="tonal" class="iconButtons">
-                        <span class="material-symbols-outlined">
-                        stroke_partial
-                        </span>
-                        Pattern
                     </v-btn>
                 </div>
             </div>

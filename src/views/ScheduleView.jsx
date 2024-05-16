@@ -81,7 +81,7 @@ function ScheduleView (props) {
                 <v-btn onClick={hoursHandler}> - </v-btn> <v-btn onClick={minutesHandler}> - </v-btn> 
                 </div>
                 <div className='center'>
-                    <v-btn onClick={cancelCreatingScheduleHandler}> Cancel </v-btn> <v-btn onClick={onOffStateHandler}> on time turn {props.onOffState ? <p>ON</p> : <p>OFF</p>}</v-btn> <v-btn disabled = {props.schedules.length >= 5} onClick={saveScheduleHandler}> Save </v-btn>
+                    <v-btn onClick={cancelCreatingScheduleHandler}> Cancel </v-btn> <v-btn onClick={onOffStateHandler}> on time turn <p>OFF</p></v-btn> <v-btn disabled = {props.schedules.length >= 5} onClick={saveScheduleHandler}> Save </v-btn>
                 </div>
             </div>
         )
