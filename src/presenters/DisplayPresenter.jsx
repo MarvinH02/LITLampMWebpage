@@ -42,15 +42,31 @@ export default function DisplayPresenter (props){
     function addToUserImagesCustomEventHandlerACB(image) {
         props.model.addToUserImages(image);
     }
+
+    function displayPersonalImageCustomEventHandlerACB(image) {
+        console.log(image); // Log the base64 string for debugging purposes
+    
+        // The base64 string 'image' will be included in the body of the POST request
+        axios.post(`http://${props.model.activeDevice.ip}:3001/display-custom-image`, {
+            imageBase64: image
+        })
+        .then(response => {
+            console.log('Image sent successfully:', response.data);
+        })
+        .catch(error => {
+            console.error('Failed to send image:', error);
+        });
+    }
+    
     function deleteImageCustomEventHandlerACB(image) {
         props.model.deleteImage(image);
     }
-    function displayPersonalImageCustomEventHandlerACB(image) {
-     
-    }
+
     function displayImageOrGifCustomEventHandlerACB(imagePath) {
         // Extract just the filename
         const imageName = imagePath.split('/').pop();
+        console.log(imagePath);
+        console.log(imagePath);
     
         // Check if props and model or activeDevice is defined
         const deviceIP = props && props.model && props.model.activeDevice && props.model.activeDevice.ip;
@@ -74,6 +90,8 @@ export default function DisplayPresenter (props){
     function clearImageOrGifCustomEventHandlerACB(){
         props.model.turnOffStockImage();
     }
+
+    
 
     return(
         <div>

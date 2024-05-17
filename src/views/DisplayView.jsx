@@ -3,7 +3,7 @@ import '../style.css';
 function DisplayView (props) {
 
     // dynamically generate the categories array by automatically counting files and fetching the first few images from specific directories
-    const stockImages = ['/src/images/hamster.jpg'] 
+    const stockImages = ['/src/images/hamster.jpg', '/src/images/sunset.png'] 
         
     const stockGifs = ['/src/share/rgbmatrix/images/Alien.gif', '/src/share/rgbmatrix/images/angel2.gif','/src/share/rgbmatrix/images/beer.gif','/src/share/rgbmatrix/images/DancingSkeletons.gif']
     
